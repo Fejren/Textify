@@ -51,6 +51,15 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['first_name', 'last_name']
     USERNAME_FIELD = 'email'
 
+    def get_full_name(self):
+        return f'{self.first_name} {self.last_name}'
+
+    def get_first_name(self):
+        return self.first_name
+
+    def __str__(self):
+        return self.email
+
 
 class Message(models.Model):
     sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='sender')
