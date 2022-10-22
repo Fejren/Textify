@@ -14,15 +14,12 @@ import Home from "./pages/Home";
 const App = () => (
   <Router>
     <Switch>
-      <Route path="/" exact component={Home}>
-        <Home />
-      </Route>
-      <Route path="/login" component={Login} >
-        <Login />
-      </Route>
-      <Route path="/register" component={Register}>
-        <Register />
-      </Route>
+      <Route exact path='/' component={Home} />
+      <Route exact path='/login' component={Login} />
+      <Route exact path='/register' component={Register} />
+      {/*<Route exact path='/reset-password' component={} />*/}
+      {/*<Route exact path='/password/reset/confirm/:uid/:token' component={} />*/}
+      {/*<Route exact path='/activate/:uid/:token' component={} />*/}
     </Switch>
   </Router>
 );

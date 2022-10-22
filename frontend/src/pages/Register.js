@@ -18,7 +18,7 @@ const Register = () => {
           <Form.Control className={"input"} placeholder={"Hasło"} type={"password"}></Form.Control>
           <Button className={"button"}>Zarejestruj się</Button>
         </Form>
-        <Form.Text className={"p"}>Masz już konto? <Link to={"Login"}>Zaloguj się</Link></Form.Text>
+        <Form.Text className={"p"}>Masz już konto? <Link to={"login"}>Zaloguj się</Link></Form.Text>
       </div>
     </div>
   );
