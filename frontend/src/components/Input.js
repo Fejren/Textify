@@ -1,6 +1,6 @@
 import React from 'react';
-import Attach from '../img/attach.png';
-import Img from '../img/img.png';
+import Attach from '..//assets/img/attach.png';
+import Img from '..//assets/img/img.png';
 
 const Input = () => {
 

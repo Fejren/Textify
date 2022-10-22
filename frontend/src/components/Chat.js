@@ -1,6 +1,6 @@
 import React from 'react';
-import Add from '../img/add.png';
-import More from '../img/more.png';
+import Add from '..//assets/img/add.png';
+import More from '..//assets/img/more.png';
 import Messages from "./Messages";
 import Input from "./Input";
 
