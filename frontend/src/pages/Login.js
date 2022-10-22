@@ -4,8 +4,9 @@ import {Link, Redirect} from "react-router-dom";
 import { connect } from 'react-redux';
 
 import {Button, Form} from "react-bootstrap";
+import { login } from '../actions/auth'
 
-const Login = () => {
+const Login = ({ login }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -16,7 +17,7 @@ const Login = () => {
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value});
   const onSubmit = e => {
     e.preventDefault();
-    // login(email, password)
+    login(email, password)
   };
 
   // is the user auth -> redirect to home
@@ -59,4 +60,4 @@ const mapStateToProps = state => ({
   // is auth?
 })
 
-export default connect()(Login);
+export default connect(null, { login })(Login);
