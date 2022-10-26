@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import {Button, Form} from "react-bootstrap";
 import { login } from '../actions/auth'
 
-const Login = ({ login }) => {
+const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -20,7 +20,9 @@ const Login = ({ login }) => {
     login(email, password)
   };
 
-  // is the user auth -> redirect to home
+  if (isAuthenticated) {
+    return <Redirect to={'/'} />
+  }
 
   return (
     <div className={"formContainer"}>
@@ -57,7 +59,7 @@ const Login = ({ login }) => {
 }
 
 const mapStateToProps = state => ({
-  // is auth?
+  isAuthenticated: state.auth.isAuthenticated
 })
 
-export default connect(null, { login })(Login);
+export default connect(mapStateToProps, { login })(Login);

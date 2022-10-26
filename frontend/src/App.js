@@ -13,18 +13,21 @@ import store from './store'
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import Layout from "./containers/Layout";
 
 const App = () => (
   <Provider store={store}>
     <Router>
-      <Switch>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/login' component={Login} />
-        <Route exact path='/register' component={Register} />
-        {/*<Route exact path='/reset-password' component={} />*/}
-        {/*<Route exact path='/password/reset/confirm/:uid/:token' component={} />*/}
-        {/*<Route exact path='/activate/:uid/:token' component={} />*/}
-      </Switch>
+      <Layout>
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/register' component={Register} />
+          {/*<Route exact path='/reset-password' component={} />*/}
+          {/*<Route exact path='/password/reset/confirm/:uid/:token' component={} />*/}
+          {/*<Route exact path='/activate/:uid/:token' component={} />*/}
+        </Switch>
+      </Layout>
     </Router>
   </Provider>
 );
