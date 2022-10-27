@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { logout } from '../actions/auth'
 import {connect} from "react-redux";
-import {Redirect} from "react-router-dom";
+import {Navigate} from "react-router-dom";
 import {Button} from "react-bootstrap";
 
 const Navbar = ({ logout, isAuthenticated, user }) => {
@@ -22,7 +22,7 @@ const Navbar = ({ logout, isAuthenticated, user }) => {
         <span className={"name"}>{user_data.first_name} {user_data.last_name}</span>
         <Button className={'btn'} onClick={() => handleLogout()}>Wyloguj</Button>
       </div>
-      {redirect ? <Redirect to={'/login'} /> : null}
+      {redirect ? <Navigate to='/login' /> : null}
     </div>
   )
 }

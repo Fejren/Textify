@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import {Link, Redirect} from "react-router-dom";
+import {Link, Navigate} from "react-router-dom";
 import { connect } from 'react-redux';
 
 import {Button, Form} from "react-bootstrap";
@@ -21,7 +21,7 @@ const Login = ({ login, isAuthenticated }) => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to={'/'} />
+    return <Navigate to='/' />
   }
 
   return (

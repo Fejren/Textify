@@ -2,14 +2,14 @@ import React, {useEffect} from 'react';
 import { connect } from 'react-redux';
 import { checkAuthenticated, load_user } from "../actions/auth";
 
-const Layout = (props) => {
+const Layout = ({ checkAuthenticated, load_user, children}) => {
   useEffect(() => {
-    props.checkAuthenticated();
-    props.load_user();
+    checkAuthenticated();
+    load_user();
   }, []);
   return (
     <>
-      {props.children}
+      {children}
     </>
   );
 };
