@@ -53,6 +53,7 @@ const Login = ({ login, isAuthenticated }) => {
           <Button type={"submit"} className={"button"}>Zaloguj się</Button>
         </Form>
         <Form.Text className={"p"}>Nie masz konta? <Link to="/register">Zarejestruj się</Link></Form.Text>
+        <Link to="/reset-password">Zresetuj hasło</Link>
       </div>
     </div>
   );

@@ -11,6 +11,8 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Layout from "./containers/Layout";
+import ResetPassword from "./pages/ResetPassword";
+import ResetPasswordConfirm from "./pages/ResetPasswordConfirm";
 
 
 const App = () => {
@@ -22,8 +24,8 @@ const App = () => {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
-          {/*<Route exact path="/reset-password" element={< />} />*/}
-          {/*<Route exact path="/password/reset/confirm/:uid/:token" element={< />} />*/}
+          <Route exact path="/reset-password" element={<ResetPassword />} />
+          <Route exact path="/password/reset/confirm/:uid/:token" element={<ResetPasswordConfirm />} />
           {/*<Route exact path="/activate/:uid/:token" element={< />} />*/}
           {/*<Route exact path="*" element={<NotFound />} />*/}
         </Routes>
