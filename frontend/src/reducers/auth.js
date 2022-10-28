@@ -9,6 +9,10 @@ import {
   PASSWORD_RESET_FAIL,
   PASSWORD_RESET_CONFIRM_SUCCESS,
   PASSWORD_RESET_CONFIRM_FAIL,
+  REGISTER_SUCCESS,
+  REGISTER_FAIL,
+  ACTIVATION_SUCCESS,
+  ACTIVATION_FAIL,
   LOGOUT
 } from '../actions/types';
 
@@ -72,6 +76,16 @@ export default function (state = initialState, action) {
         isAuthenticated: false,
         user: null,
       }
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: false,
+      }
+    case REGISTER_FAIL:
+      return {
+        ...state,
+        isAuthenticated: false,
+      }
     case PASSWORD_RESET_SUCCESS:
       return {
         ...state
@@ -88,6 +102,15 @@ export default function (state = initialState, action) {
       return {
         ...state
       }
+    case ACTIVATION_SUCCESS:
+      return {
+        ...state
+      }
+    case ACTIVATION_FAIL:
+      return {
+        ...state
+      }
+
     default:
       return state
   }
