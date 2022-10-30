@@ -87,25 +87,10 @@ export default function (state = initialState, action) {
         isAuthenticated: false,
       }
     case PASSWORD_RESET_SUCCESS:
-      return {
-        ...state
-      }
     case PASSWORD_RESET_FAIL:
-      return {
-        ...state
-      }
     case PASSWORD_RESET_CONFIRM_SUCCESS:
-      return {
-        ...state
-      }
     case PASSWORD_RESET_CONFIRM_FAIL:
-      return {
-        ...state
-      }
     case ACTIVATION_SUCCESS:
-      return {
-        ...state
-      }
     case ACTIVATION_FAIL:
       return {
         ...state

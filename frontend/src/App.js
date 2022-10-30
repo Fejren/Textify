@@ -13,6 +13,7 @@ import Home from "./pages/Home";
 import Layout from "./containers/Layout";
 import ResetPassword from "./pages/ResetPassword";
 import ResetPasswordConfirm from "./pages/ResetPasswordConfirm";
+import Activate from "./pages/Activate";
 
 
 const App = () => {
@@ -26,7 +27,7 @@ const App = () => {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/reset-password" element={<ResetPassword />} />
           <Route exact path="/password/reset/confirm/:uid/:token" element={<ResetPasswordConfirm />} />
-          {/*<Route exact path="/activate/:uid/:token" element={< />} />*/}
+          <Route exact path="/activate/:uid/:token" element={<Activate />} />
           {/*<Route exact path="*" element={<NotFound />} />*/}
         </Routes>
       </Layout>

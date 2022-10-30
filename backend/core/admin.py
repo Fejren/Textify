@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Message
+from .models import Message, User
 
 admin.site.site_header = "Panel administracyjny Textify"
 
@@ -11,3 +11,4 @@ class MessageAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Message, MessageAdmin)
+admin.site.register(User)
