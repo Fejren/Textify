@@ -25,9 +25,9 @@ const Register = ({register, isAuthenticated}) => {
     }
   };
 
-  // if (isAuthenticated) {
-  //   return <Navigate to='/login' />
-  // }
+  if (isAuthenticated) {
+    return <Navigate to='/login' />
+  }
   if (accountCreated) {
     return <Navigate to='/login' />
   }

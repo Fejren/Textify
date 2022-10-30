@@ -1,8 +1,13 @@
 import React from 'react';
 import Sidebar from "../components/Sidebar";
 import Chat from "../components/Chat";
+import {connect} from "react-redux";
+import {Navigate} from "react-router-dom";
 
-const Home = () => {
+const Home = ({isAuthenticated}) => {
+  if (!isAuthenticated) {
+    return <Navigate to='/login' />
+  }
 
   return (
     <div className={"home"}>
@@ -14,4 +19,8 @@ const Home = () => {
   );
 }
 
-export default Home;
+const mapStateToProps = state => ({
+    isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, null)(Home);
