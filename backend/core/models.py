@@ -1,6 +1,8 @@
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
 from django.db import models
+from django.contrib.auth import get_user_model
+from django.db import models
 
 from backend import settings
 
@@ -61,15 +63,32 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.email
 
 
-class Message(models.Model):
-    sender = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='sender')
-    receiver = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='receiver')
-    body = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    is_read = models.BooleanField(default=False)
+user_model = get_user_model()
+
+
+class Contact(models.Model):
+    user = models.ForeignKey(
+        user_model, related_name='friends', on_delete=models.CASCADE)
+    friends = models.ManyToManyField('self', blank=True)
 
     def __str__(self):
-        return f'{self.sender} to {self.receiver}'
+        return self.user.get_full_name()
 
-    class Meta:
-        ordering = ('created_at',)
+
+class Message(models.Model):
+    contact = models.ForeignKey(
+        Contact, related_name='messages', on_delete=models.CASCADE)
+    content = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.contact.user.get_full_name()
+
+
+class Chat(models.Model):
+    participants = models.ManyToManyField(
+        Contact, related_name='chats', blank=True)
+    messages = models.ManyToManyField(Message, blank=True)
+
+    def __str__(self):
+        return "{}".format(self.pk)
