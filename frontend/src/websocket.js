@@ -1,3 +1,5 @@
+import {SOCKET_URL} from "./settings";
+
 class WebSocketService {
   static instance = null;
   callbacks = {};
@@ -11,10 +13,11 @@ class WebSocketService {
 
   constructor() {
     this.socketRef = null;
+    this.callbacks = {};
   }
 
-  connect(chatUrl) {
-    const path = `${process.env.SOCKET_URL}/ws/chat/${chatUrl}/`;
+  connect = chatUrl => {
+    const path = `${ SOCKET_URL }/ws/chat/${chatUrl}/`;
     this.socketRef = new WebSocket(path);
     this.socketRef.onopen = () => {
       console.log("WebSocket open");
@@ -29,10 +32,14 @@ class WebSocketService {
       console.log("WebSocket closed let's reopen");
       this.connect();
     };
-  }
+  };
+
+  state = () => this.socketRef.readyState;
 
   disconnect() {
     this.socketRef.close();
+    console.log(this.socketRef)
+
   }
 
   socketNewMessage(data) {
@@ -49,10 +56,10 @@ class WebSocketService {
     }
   }
 
-  fetchMessages(username, chatId) {
+  fetchMessages(userId, chatId) {
     this.sendMessage({
       command: "fetch_messages",
-      username: username,
+      userId: userId,
       chatId: chatId
     });
   }
@@ -60,7 +67,7 @@ class WebSocketService {
   newChatMessage(message) {
     this.sendMessage({
       command: "new_message",
-      from: message.from,
+      from_user: message.from_user,
       message: message.content,
       chatId: message.chatId
     });
@@ -74,13 +81,10 @@ class WebSocketService {
   sendMessage(data) {
     try {
       this.socketRef.send(JSON.stringify({ ...data }));
+      console.log('poszło')
     } catch (err) {
       console.log(err.message);
     }
-  }
-
-  state() {
-    return this.socketRef.readyState;
   }
 }
 
