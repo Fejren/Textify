@@ -82,7 +82,7 @@ class Message(models.Model):
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.contact.user.get_full_name()
+        return self.contact.__str__()
 
 
 class Chat(models.Model):
