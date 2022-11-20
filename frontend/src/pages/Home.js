@@ -3,11 +3,16 @@ import Sidebar from "../components/Sidebar";
 import Chat from "../components/Chat";
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
+import * as messageActions from "../actions/message";
+import WebSocketInstance from "../websocket";
 
-const Home = ({isAuthenticated}) => {
+const Home = ({isAuthenticated, setMessages, addMessage}) => {
   if (!isAuthenticated) {
     return <Navigate to='/login' />
   }
+  WebSocketInstance.addCallbacks(
+    setMessages.bind(this),
+    addMessage.bind(this))
 
   return (
     <div className={"home"}>
@@ -20,7 +25,17 @@ const Home = ({isAuthenticated}) => {
 }
 
 const mapStateToProps = state => ({
-    isAuthenticated: state.auth.isAuthenticated
+    isAuthenticated: state.auth.isAuthenticated,
+    chats: state.message.chats
 });
 
-export default connect(mapStateToProps, null)(Home);
+const mapDispatchToProps = dispatch => {
+  return {
+    addMessage: message => dispatch(messageActions.addMessage(message)),
+    setMessages: messages => dispatch(messageActions.setMessages(messages)),
+    getUserChats: (username, token) =>
+      dispatch(messageActions.getUserChats(username, token))
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
