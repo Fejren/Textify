@@ -20,9 +20,9 @@ class ChatListView(ListAPIView):
 
     def get_queryset(self):
         queryset = Chat.objects.all()
-        username = self.request.query_params.get('username', None)
-        if username is not None:
-            contact = get_user_contact(username)
+        user_id = self.request.query_params.get('id', None)
+        if user_id is not None:
+            contact = get_user_contact(user_id)
             queryset = contact.chats.all()
         return queryset
 
