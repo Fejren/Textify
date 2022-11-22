@@ -6,19 +6,20 @@ import * as messageActions from "../actions/message";
 import {connect} from "react-redux";
 
 class Sidebar extends Component {
-  currentUser = {...this.props.user}
-  isAuthenticated = this.props.isAuthenticated
 
   waitForDetails() {
+    let isAuthenticated = this.props.isAuthenticated
+    let currentUser = {...this.props.user}
+    let getUserChats = this.props.getUserChats
     const component = this;
     console.log(this.props.access)
     setTimeout(function() {
       if (
-        this.state.isAuthenticated
+        isAuthenticated
       ) {
-        console.log(this.state.currentUser)
-        this.props.getUserChats(
-          this.state.currentUser.id,
+        console.log(currentUser)
+        getUserChats(
+          currentUser.id,
         );
         return;
       } else {
@@ -37,7 +38,7 @@ class Sidebar extends Component {
       return (
         <Chats
           key={c.id}
-          name="Harvey Specter"
+          contact={c.participants[0]}
           picURL="http://emilcarlsson.se/assets/louislitt.png"
           status="busy"
           chatURL={`/${c.id}`}
@@ -48,6 +49,9 @@ class Sidebar extends Component {
     <div className={"sidebar"}>
       <Navbar />
       <Search />
+      <ul>
+        {activeChats}
+      </ul>
     </div>
     );
   }
