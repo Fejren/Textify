@@ -1,14 +1,13 @@
 import React from 'react';
 
-const Chats = () => {
+const Chats = props => {
 
   return (
     <div className={"chats"}>
       <div className={"userChat"}>
         <img />
         <div className={"userChatInfo"}>
-          <span>Dawid Zaręba</span>
-          <p>Hello</p>
+          <span>{props.contact}</span>
         </div>
       </div>
     </div>
