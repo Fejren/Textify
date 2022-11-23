@@ -10,7 +10,7 @@ function withParams(Component) {
 class Chat extends Component {
   state = { message: "" };
   currentUser = {...this.props.user}
-  chatId = 3
+  chatId = 1
 
   initialiseChat() {
     this.waitForSocketConnection(() => {
@@ -126,6 +126,10 @@ class Chat extends Component {
   render() {
     return (
       <>
+        <div className={'chat'}>
+          <div className={'chatInfo'}>
+          {/*  TODO: zrób Tobiasz Szpak / czas wiadomości / ma się wysyłać jedna wiadomość */}
+          </div>
         <div className="messages">
           <ul id="chat-log">
             {this.props.messages && this.renderMessages(this.props.messages)}
@@ -137,23 +141,22 @@ class Chat extends Component {
             />
           </ul>
         </div>
-        <div className="message-input">
+        <div className="messageInput">
           <form onSubmit={this.sendMessageHandler}>
-            <div className="wrap">
               <input
                 onChange={this.messageChangeHandler}
                 value={this.state.message}
                 required
                 id="chat-message-input"
                 type="text"
-                placeholder="Write your message..."
+                placeholder="Napisz wiadomość..."
               />
               <i className="fa fa-paperclip attachment" aria-hidden="true" />
-              <button id="chat-message-submit" className="submit">
+              <button id="chat-message-submit" className="submit">Wyslij
                 <i className="fa fa-paper-plane" aria-hidden="true" />
               </button>
-            </div>
           </form>
+        </div>
         </div>
       </>
     );
