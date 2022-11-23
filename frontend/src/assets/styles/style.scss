@@ -132,12 +132,11 @@ $lighterNavColorTextidy: #555555;
     margin: 0px;
     overflow: hidden;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .2);
-    background-color: #ED814A;
+    background-color: $bgColorTextify;
 
     .sidebar {
-      flex: 1;
-      //background-color: $sideColorTextify;
-      background-color: rgba(255,255,255,0.025);
+      flex: 3;
+      background-color: rgba(255, 255, 255, 0.05);
       position: relative;
 
       .navbar {
@@ -180,93 +179,10 @@ $lighterNavColorTextidy: #555555;
 
       }
 
-      .search {
-        border-bottom: 1px solid gray;
-
-        .searchForm {
-
-          input {
-            background-color: transparent;
-            border: none;
-            color: white;
-            outline: none;
-            padding: 10px;
-            border-bottom: 1px solid gray;
-            width: 100%;
-
-            &::placeholder {
-              color: lightgray;
-            }
-          }
-        }
-
-        .userChat {
-          padding: 10px;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          color: white;
-          cursor: pointer;
-
-          &:hover {
-            background-color: rgba(0,0,0,0.1);
-          }
-
-          img {
-            background-color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-          }
-
-          .userChatInfo {
-
-
-            span {
-
-            }
-          }
-        }
-      }
-
-      .chats {
-
-        .userChat {
-          padding: 10px;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          color: white;
-          cursor: pointer;
-
-          img {
-            background-color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
-          }
-
-          .userChatInfo {
-            font-size: 18px;
-            font-weight: 500;
-
-            span {
-
-            }
-
-            p {
-              font-size: 14px;
-              color: lightgray;
-            }
-          }
-        }
-      }
     }
 
     .chat {
-      fleX: 3;
+      flex: 7;
 
       .chatInfo {
         height: 50px;
@@ -363,52 +279,37 @@ $lighterNavColorTextidy: #555555;
         align-items: center;
         justify-content: space-between;
 
-        input {
-          background-color: $logoColorTextify;
-          width: 100%;
-          border: none;
-          outline: none;
-          color: #2f2d52;
-          font-size: 18px;
-
-          &::placeholder {
-            color: lightgray;
-          }
-        }
-
-        .send {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-
-          img {
-            height: 24px;
-            cursor: pointer;
-          }
-
+        form {
           input {
+            background-color: $logoColorTextify;
+            width: 100%;
+            border: none;
+            outline: none;
+            color: #2f2d52;
+            font-size: 18px;
 
-          }
-
-          label {
-
-            img {
-
+            &::placeholder {
+              color: lightgray;
             }
           }
-
-          button {
-            margin-right: 20px;
-            border: none;
-            padding: 5px 10px;
-            color: white;
-            background-color: $btnColorTextify;
+          .submit {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              float: right;
+              margin-right: 20px;
+              border: none;
+              padding: 5px 10px;
+              color: white;
+              background-color: $btnColorTextify;
           }
         }
       }
     }
   }
 }
+
+// SCROLL
 
 /* width */
 ::-webkit-scrollbar {
@@ -433,30 +334,6 @@ $lighterNavColorTextidy: #555555;
 
 ::-webkit-scrollbar-button {
   display: none;
-}
-
-.bottom {
-  background-color: $navColorTextify;
-  position: absolute;
-  bottom: 0px;
-  padding: 10px;
-  width: 100%;
-
-  .buttons {
-
-    .button {
-      color: white;
-      background-color: $btnColorTextify;
-      border: none;
-      font-size: 10px;
-      cursor: pointer;
-
-      img {
-        width: 32px;
-        display: none;
-      }
-    }
-  }
 }
 
 .notfoundContainer {
