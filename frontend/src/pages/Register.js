@@ -85,7 +85,7 @@ const Register = ({register, isAuthenticated}) => {
           />
           <Button className={"button"} type={"submit"}>Zarejestruj się</Button>
         </Form>
-        <Form.Text className={"p"}>Masz już konto? <Link to={"/login"}>Zaloguj się</Link></Form.Text>
+        <Form.Text className={"p"}>Masz już konto? <Link className={'link'} to={"/login"}>Zaloguj się</Link></Form.Text>
       </div>
     </div>
   );
