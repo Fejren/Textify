@@ -105,8 +105,8 @@ DATABASES = {
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'textify123@gmail.com'
-EMAIL_HOST_PASSWORD = 'Chuj123456'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
 
 # Password validation
@@ -148,11 +148,12 @@ CORS_ALLOWED_ORIGINS = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'build/static')
-# ]
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+STATIC_ROOT = '/vol/web/static'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = '/vol/web/media'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
