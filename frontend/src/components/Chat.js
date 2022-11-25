@@ -10,7 +10,7 @@ function withParams(Component) {
 class Chat extends Component {
   state = { message: "" };
   currentUser = {...this.props.user}
-  chatId = 1
+  chatId = {...this.props.params}.chatId
 
   initialiseChat() {
     this.waitForSocketConnection(() => {
@@ -110,20 +110,21 @@ class Chat extends Component {
   }
 
   // componentWillReceiveProps(newProps) {
-  //   if (this.chatId !== newProps.match.params.chatId) {
+  //   if (this.state.chatId !== {...newProps.params}.chatId) {
   //     WebSocketInstance.disconnect();
   //     this.waitForSocketConnection(() => {
   //       WebSocketInstance.fetchMessages(
   //         this.currentUser.id,
-  //         newProps.match.params.chatId
+  //         {...newProps.params}.chatId
   //       );
   //     });
-  //     WebSocketInstance.connect(newProps.match.params.chatId);
+  //     WebSocketInstance.connect({...newProps.params}.chatId);
   //   }
   // }
 
 
   render() {
+    console.log(this.chatId)
     return (
       <>
         <div className={'chat'}>
@@ -170,4 +171,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Chat);
+export default connect(mapStateToProps)(withParams(Chat));
