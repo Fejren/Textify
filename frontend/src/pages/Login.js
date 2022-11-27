@@ -12,7 +12,7 @@ const Login = ({ login, isAuthenticated }) => {
     password: ''
   });
 
-  const { email, password} = formData;
+  const { email, password } = formData;
 
   const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value});
   const onSubmit = e => {
@@ -46,7 +46,6 @@ const Login = ({ login, isAuthenticated }) => {
             name={'password'}
             value={password}
             onChange={e => onChange(e)}
-            minLength={'8'}
             required
           />
 

@@ -4,9 +4,10 @@ import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
 import {Button} from "react-bootstrap";
 
-const Navbar = ({ logout, isAuthenticated, user }) => {
+const Navbar = ({ logout, user }) => {
   const [redirect, setRedirect] = useState(false);
-  const user_data = {...user};
+  const currentUser = {...user}
+  console.log(currentUser)
 
   const handleLogout = () => {
     logout();
@@ -18,8 +19,8 @@ const Navbar = ({ logout, isAuthenticated, user }) => {
     <div className={"navbar"}>
       <span className={"logo"}>Textify</span>
       <div className={"user"}>
-        <img className={"img"} src={""} alt={""}/>
-        <span className={"name"}>{user_data.first_name} {user_data.last_name}</span>
+        <img className={"img"} src={currentUser.avatar} alt={""}/>
+        <span className={"name"}>{currentUser.first_name} {currentUser.last_name}</span>
         <Button className={'btn'} onClick={() => handleLogout()}>Wyloguj</Button>
       </div>
       {redirect ? <Navigate to='/login' /> : null}
