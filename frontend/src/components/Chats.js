@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 const Chats = props => {
 
@@ -7,7 +8,7 @@ const Chats = props => {
       <div className={"userChat"}>
         <img />
         <div className={"userChatInfo"}>
-          <span>{props.contact}</span>
+          <Link className={'link'} to={props.chatURL}>{props.contact}</Link>
         </div>
       </div>
     </div>
