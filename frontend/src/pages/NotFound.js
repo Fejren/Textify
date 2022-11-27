@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-const Notfound = () => {
+const NotFound = () => {
 
     return (
         <div className={"formContainer"}>
@@ -15,4 +15,4 @@ const Notfound = () => {
     );
 }
 
-export default Notfound;
+export default NotFound;

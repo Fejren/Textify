@@ -15,6 +15,7 @@ import ResetPassword from "./pages/ResetPassword";
 import ResetPasswordConfirm from "./pages/ResetPasswordConfirm";
 import Activate from "./pages/Activate";
 import Chat from "./components/Chat";
+import NotFound from "./pages/NotFound";
 
 
 const App = () => {
@@ -30,7 +31,7 @@ const App = () => {
           <Route exact path="/password/reset/confirm/:uid/:token" element={<ResetPasswordConfirm />} />
           <Route exact path="/activate/:uid/:token" element={<Activate />} />
           <Route exact path="/:chatId/" element={<Chat />} />
-          {/*<Route exact path="*" element={<NotFound />} />*/}
+          <Route exact path="*" element={<NotFound />} />
         </Routes>
       </Layout>
     </Provider>
