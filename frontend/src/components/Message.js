@@ -1,19 +1,48 @@
 import React from 'react';
 
-const Message = () => {
+const Messages = ({ messages, currentUser }) => {
 
-  return (
-    <div className={"message"}>
-      <div className={"messageInfo"}>
-        <img src={"https://scontent-waw1-1.xx.fbcdn.net/v/t39.30808-6/275184988_1801140256758525_2879176798216359489_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=yWarFu9-k5cAX_xLBxn&_nc_ht=scontent-waw1-1.xx&oh=00_AT-aIicEIG5JNo2sMa68Z-oEgFs6ANkbuT0dlpaemPZ_tA&oe=6353A5E9"} alt={""}/>
-        <span>Teraz</span>
-      </div>
-      <div className={"messageContent"}>
-        <p>hello</p>
-        <img src={"https://scontent-waw1-1.xx.fbcdn.net/v/t39.30808-6/275184988_1801140256758525_2879176798216359489_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=yWarFu9-k5cAX_xLBxn&_nc_ht=scontent-waw1-1.xx&oh=00_AT-aIicEIG5JNo2sMa68Z-oEgFs6ANkbuT0dlpaemPZ_tA&oe=6353A5E9"} alt={""}/>
-      </div>
-    </div>
-  )
+  const renderTimestamp = timestamp => {
+    let prefix = "";
+    const timeDiff = Math.round(
+      (new Date().getTime() - new Date(timestamp).getTime()) / 60000
+    );
+    if (timeDiff < 1) {
+      // less than one minute ago
+      prefix = "teraz";
+    } else if (timeDiff < 60 && timeDiff > 1) {
+      // less than sixty minutes ago
+      prefix = `${timeDiff} minut temu`;
+    } else if (timeDiff < 24 * 60 && timeDiff > 60) {
+      // less than 24 hours ago
+      prefix = `${Math.round(timeDiff / 60)} godzin temu`;
+    } else if (timeDiff < 31 * 24 * 60 && timeDiff > 24 * 60) {
+      // less than 7 days ago
+      prefix = `${Math.round(timeDiff / (60 * 24))} dni temu`;
+    } else {
+      prefix = `${new Date(timestamp)}`;
+    }
+    return prefix;
+  };
+
+  const renderMessages = messages => {
+    let array = messages.map((message, i, arr) => (<li
+        key={message.id}
+        style={{marginBottom: arr.length - 1 === i ? "300px" : "15px"}}
+        className={message.author === currentUser.id ? "sent" : "replies"}
+      >
+        <p>
+          {message.content}
+          <br/>
+          <small>{renderTimestamp(message.timestamp)}</small>
+        </p>
+      </li>
+    ));
+
+    return [...new Map(array.map(item =>
+      [item['key'], item])).values()]
+  };
+    return renderMessages(messages)
 }
 
-export default Message;
+export default Messages;
