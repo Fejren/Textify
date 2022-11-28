@@ -24,15 +24,30 @@ const Sidebar = ({ isAuthenticated, user, getUserChats, chats }) => {
   }, [])
 
   let activeChats = chats.map(c => {
-    return (
-      <Chats
-        key={c.id}
-        contact={c.participants[0]}
-        picURL="http://emilcarlsson.se/assets/louislitt.png"
-        status="busy"
-        chatURL={`/${c.id}`}
-      />
-    );
+    let currentUser = {...user}
+    let fullName = `${currentUser.first_name} ${currentUser.last_name}`
+    if(fullName === c.participants[0]){
+      return (
+        <Chats
+          key={c.id}
+          contact={c.participants[1]}
+          picURL="http://emilcarlsson.se/assets/louislitt.png"
+          status="busy"
+          chatURL={`/${c.id}`}
+        />
+      );
+    } else {
+      return (
+        <Chats
+          key={c.id}
+          contact={c.participants[0]}
+          picURL="http://emilcarlsson.se/assets/louislitt.png"
+          status="busy"
+          chatURL={`/${c.id}`}
+        />
+      );
+    }
+
   });
 
 return(
