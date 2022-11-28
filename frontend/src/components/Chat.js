@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import WebSocketInstance from "../websocket";
 import {connect} from "react-redux";
 import {useParams} from "react-router-dom";
+import Messages from "./Message";
 
 const Chat = ({ user, messages }) => {
   let [message, setMessage] = useState("")
@@ -51,55 +52,17 @@ const Chat = ({ user, messages }) => {
     setMessage("");
   }
 
-  const renderTimestamp = timestamp => {
-    let prefix = "";
-    const timeDiff = Math.round(
-      (new Date().getTime() - new Date(timestamp).getTime()) / 60000
-    );
-    if (timeDiff < 1) {
-      // less than one minute ago
-      prefix = "teraz";
-    } else if (timeDiff < 60 && timeDiff > 1) {
-      // less than sixty minutes ago
-      prefix = `${timeDiff} minut temu`;
-    } else if (timeDiff < 24 * 60 && timeDiff > 60) {
-      // less than 24 hours ago
-      prefix = `${Math.round(timeDiff / 60)} godzin temu`;
-    } else if (timeDiff < 31 * 24 * 60 && timeDiff > 24 * 60) {
-      // less than 7 days ago
-      prefix = `${Math.round(timeDiff / (60 * 24))} dni temu`;
-    } else {
-      prefix = `${new Date(timestamp)}`;
-    }
-    return prefix;
-  };
-
-  const renderMessages = messages => {
-    let array = messages.map((message, i, arr) => (<li
-        key={message.id}
-        style={{marginBottom: arr.length - 1 === i ? "300px" : "15px"}}
-        className={message.author === currentUser.id ? "sent" : "replies"}
-      >
-        <p>
-          {message.content}
-          <br/>
-          <small>{renderTimestamp(message.timestamp)}</small>
-        </p>
-      </li>
-    ));
-
-    return [...new Map(array.map(item =>
-        [item['key'], item])).values()]
-  };
-
   return (
     <div className={'chat'}>
       <div className={'chatInfo'}>
-        {/*  TODO: zrób Tobiasz Szpak / czas wiadomości / ma się wysyłać jedna wiadomość */}
+        {/*  TODO: zrób Tobiasz Szpak / czas wiadomości */}
       </div>
       <div className="messages">
         <ul id="chat-log">
-          {messages && renderMessages(messages)}
+          {messages && <Messages
+            messages={messages}
+            currentUser={currentUser}
+          />}
           <div
             style={{float: "left", clear: "both"}}
           />
