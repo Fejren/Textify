@@ -75,8 +75,7 @@ const Chat = ({ user, messages }) => {
   };
 
   const renderMessages = messages => {
-    return messages.map((message, i, arr) => (
-      <li
+    let array = messages.map((message, i, arr) => (<li
         key={message.id}
         style={{marginBottom: arr.length - 1 === i ? "300px" : "15px"}}
         className={message.author === currentUser.id ? "sent" : "replies"}
@@ -88,6 +87,9 @@ const Chat = ({ user, messages }) => {
         </p>
       </li>
     ));
+
+    return [...new Map(array.map(item =>
+        [item['key'], item])).values()]
   };
 
   return (
@@ -105,19 +107,19 @@ const Chat = ({ user, messages }) => {
       </div>
       <div className="messageInput">
         <form onSubmit={sendMessageHandler}>
-          {chatId && <input
+          {chatId ? <input
             onChange={(e)=>setMessage(e.target.value)}
             value={message}
             required
             id="chat-message-input"
             type="text"
             placeholder="Napisz wiadomość..."
-          /> }
+          /> : <p>Wybierz kontakt</p>}
           <i className="fa fa-paperclip attachment" aria-hidden="true"/>
-          <button id="chat-message-submit" className="submit">
+          {chatId && <button id="chat-message-submit" className="submit">
             Wyslij
             <i className="fa fa-paper-plane" aria-hidden="true"/>
-          </button>
+          </button>}
         </form>
       </div>
     </div>

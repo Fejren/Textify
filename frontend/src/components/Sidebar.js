@@ -7,27 +7,20 @@ import Search from "./Search";
 
 const Sidebar = ({ isAuthenticated, user, getUserChats, chats }) => {
 
-  const waitForDetails = () => {
+  useEffect(() => {
     let currentUser = {...user}
 
     setTimeout(function () {
       if(isAuthenticated && currentUser.id) {
-         getUserChats(
+        getUserChats(
           currentUser.id
         );
         return;
       } else {
         console.log("Waiting for details")
-        waitForDetails()
+        return;
       }
     }, 1000);
-  }
-
-  useEffect(() => {
-    setTimeout(() => {
-      waitForDetails();
-    }, 100)
-
   }, [])
 
   let activeChats = chats.map(c => {
