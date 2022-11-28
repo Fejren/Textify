@@ -14,7 +14,6 @@ import Layout from "./containers/Layout";
 import ResetPassword from "./pages/ResetPassword";
 import ResetPasswordConfirm from "./pages/ResetPasswordConfirm";
 import Activate from "./pages/Activate";
-import Chat from "./components/Chat";
 import NotFound from "./pages/NotFound";
 
 
@@ -24,13 +23,14 @@ const App = () => {
     <Provider store={store}>
       <Layout>
         <Routes>
-          <Route exact path="/" element={<Home />} />
+          <Route path="/" element={<Home />}>
+            <Route path="/:chatId" element={<Home />}/>
+          </Route>
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/reset-password" element={<ResetPassword />} />
           <Route exact path="/password/reset/confirm/:uid/:token" element={<ResetPasswordConfirm />} />
           <Route exact path="/activate/:uid/:token" element={<Activate />} />
-          <Route exact path="/:chatId/" element={<Chat />} />
           <Route exact path="*" element={<NotFound />} />
         </Routes>
       </Layout>
