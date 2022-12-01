@@ -9,7 +9,7 @@ const Sidebar = ({ isAuthenticated, user, getUserChats, chats }) => {
 
   useEffect(() => {
     let currentUser = {...user}
-
+    
     setTimeout(function () {
       if(isAuthenticated && currentUser.id) {
         getUserChats(
@@ -21,7 +21,7 @@ const Sidebar = ({ isAuthenticated, user, getUserChats, chats }) => {
         return;
       }
     }, 1000);
-  }, [])
+  }, [user])
 
   let activeChats = chats.map(c => {
     let currentUser = {...user}
