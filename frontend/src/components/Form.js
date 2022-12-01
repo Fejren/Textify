@@ -1,11 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import { Form, Button, Select } from "antd";
 import axios from "axios";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import * as navActions from "../store/actions/nav";
-import * as messageActions from "../store/actions/message";
-import { HOST_URL } from "../settings";
+import {API_URL} from "../settings";
+import * as messageActions from "../actions/message";
 
 const FormItem = Form.Item;
 
@@ -13,67 +12,57 @@ function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);
 }
 
-class HorizontalAddChatForm extends React.Component {
-  state = {
-    usernames: [],
-    error: null
+const HorizontalAddChatForm = ({ access, user }) => {
+  const [emails, setEmails] = useState([])
+  const [errors, setErrors] = useState()
+
+  const handleChange = value => {
+    setEmails(value);
   };
 
-  handleChange = value => {
-    this.setState({
-      usernames: value
-    });
-  };
-
-  componentDidMount() {
-    this.props.form.validateFields();
-  }
-
-  handleSubmit = e => {
-    const { usernames } = this.state;
+  const handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
+      let currentUser = {...user}
       if (!err) {
-        const combined = [...usernames, this.props.username];
+        const combined = [...emails, currentUser.email];
         axios.defaults.xsrfHeaderName = "X-CSRFTOKEN";
         axios.defaults.xsrfCookieName = "csrftoken";
         axios.defaults.headers = {
           "Content-Type": "application/json",
-          Authorization: `Token ${this.props.token}`
+          Authorization: `JWT ${access}`
         };
         axios
-          .post(`${HOST_URL}/chat/create/`, {
+          .post(`${API_URL}/chat/create/`, {
             messages: [],
             participants: combined
           })
           .then(res => {
             this.props.history.push(`/${res.data.id}`);
             this.props.closeAddChatPopup();
-            this.props.getUserChats(this.props.username, this.props.token);
+            this.props.getUserChats(currentUser.id, access);
           })
           .catch(err => {
             console.error(err);
-            this.setState({
+            setErrors({
               error: err
             });
           });
       }
     });
   };
-
-  render() {
-    const {
-      getFieldDecorator,
-      getFieldsError,
-      getFieldError,
-      isFieldTouched
-    } = this.props.form;
+  const {
+    getFieldDecorator,
+    getFieldsError,
+    getFieldError,
+    isFieldTouched
+  } = this.props.form;
 
     const userNameError =
       isFieldTouched("userName") && getFieldError("userName");
     return (
-      <Form layout="inline" onSubmit={this.handleSubmit}>
-        {this.state.error ? `${this.state.error}` : null}
+      <Form layout="inline" onSubmit={handleSubmit}>
+        {errors ? `${errors}` : null}
         <FormItem
           validateStatus={userNameError ? "error" : ""}
           help={userNameError || ""}
@@ -83,7 +72,7 @@ class HorizontalAddChatForm extends React.Component {
               {
                 required: true,
                 message:
-                  "Please input the username of the person you want to chat with"
+                  "Wpisz email osoby, z którą chcesz zacząć pisać"
               }
             ]
           })(
@@ -91,7 +80,7 @@ class HorizontalAddChatForm extends React.Component {
               mode="tags"
               style={{ width: "100%" }}
               placeholder="Tags Mode"
-              onChange={this.handleChange}
+              onChange={handleChange}
             >
               {[]}
             </Select>
@@ -103,28 +92,27 @@ class HorizontalAddChatForm extends React.Component {
             htmlType="submit"
             disabled={hasErrors(getFieldsError())}
           >
-            Start a chat
+            Zacznij chat
           </Button>
         </FormItem>
       </Form>
     );
-  }
 }
 
 const AddChatForm = Form.create()(HorizontalAddChatForm);
 
 const mapStateToProps = state => {
   return {
-    token: state.auth.token,
-    username: state.auth.username
+    access: state.auth.access,
+    user: state.auth.user
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     closeAddChatPopup: () => dispatch(navActions.closeAddChatPopup()),
-    getUserChats: (username, token) =>
-      dispatch(messageActions.getUserChats(username, token))
+    getUserChats: (userId, token) =>
+      dispatch(messageActions.getUserChats(userId, token))
   };
 };
 
