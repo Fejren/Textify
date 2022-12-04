@@ -8,17 +8,16 @@
 
 $fontFamily: 'Montserrat', sans-serif;
 
-$bgColorTextify: #ED814A;
-$btnColorTextify: #F7A04D;
-$logoColorTextify: #FF8A4F;
-$titleColorTextify: #FF8A4F;
-$sideColorTextify: #F5844C;
-$navColorTextify: #303030;
-$lighterNavColorTextidy: #555555;
+$bgColor: #563DD9;
+$btnColor: #563DD9;
+$logoColor: #563DD9;
+$titleColor: #563DD9;
+$sideColor: #563DD9;
+$navColor: #303030;
+$lighterNavColor: #555555;
 
-//#E0A951
+//#563DD9
 
-//#FF772B
 
 // @include mobile {
 // ...
@@ -26,7 +25,7 @@ $lighterNavColorTextidy: #555555;
 
 
 .formContainer {
-  background-color: $bgColorTextify;
+  background-color: $bgColor;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -44,18 +43,18 @@ $lighterNavColorTextidy: #555555;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .2);
 
     .link {
-      color: $titleColorTextify;
+      color: $titleColor;
     }
 
     .logo {
-      color: $logoColorTextify;
+      color: $logoColor;
       font-family: 'Montserrat', sans-serif;
       font-weight: bold;
       font-size: 34px;
     }
 
     .title {
-      color: $titleColorTextify;
+      color: $titleColor;
       font-size: 16px;
     }
 
@@ -71,12 +70,12 @@ $lighterNavColorTextidy: #555555;
         border-radius: 0;
 
         &:focus {
-          border-bottom: 1px solid $titleColorTextify;
+          border-bottom: 1px solid $titleColor;
           box-shadow: none;
         }
 
         &:hover {
-          border-bottom: 1px solid $titleColorTextify;
+          border-bottom: 1px solid $titleColor;
         }
 
         &::placeholder {
@@ -85,7 +84,7 @@ $lighterNavColorTextidy: #555555;
       }
 
       .button {
-        background-color: $btnColorTextify;
+        background-color: $btnColor;
         color: white;
         padding: 10px;
         font-weight: bold;
@@ -117,7 +116,7 @@ $lighterNavColorTextidy: #555555;
 }
 
 .home {
-  background-color: $bgColorTextify;
+  background-color: $bgColor;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -132,61 +131,155 @@ $lighterNavColorTextidy: #555555;
     margin: 0px;
     overflow: hidden;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .2);
-    background-color: $bgColorTextify;
+    background-color: $bgColor;
 
     .sidebar {
-      flex: 3;
+      flex: 4;
       background-color: rgba(255, 255, 255, 0.05);
       position: relative;
 
       .navbar {
         display: flex;
         align-items: center;
-        background-color: $navColorTextify;
-        padding: 20px;
+        background-color: $navColor;
+        padding: 15px;
         justify-content: space-between;
         color: white;
 
         .logo {
-          color: $logoColorTextify;
+          color: $logoColor;
           font-family: $fontFamily;
           font-weight: bold;
-          font-size: 34px;
+          font-size: 30px;
+
+           @include mobile {
+           display: none;
+           }
         }
 
         .user {
           display: flex;
-          gap: 10px;
+          gap: 5px;
 
           .img {
-            background-color: #303030;
-            height: 24px;
-            width: 24px;
+            background-color: #ffffff;
+            height: 26px;
+            width: 26px;
             border-radius: 50%;
             object-fit: cover;
           }
 
-          .button {
+          .name {
+            font-size: 18px;
+          }
+
+          .btn {
             color: white;
-            background-color: $btnColorTextify;
+            background-color: $btnColor;
             border: none;
             font-size: 10px;
             cursor: pointer;
             position: absolute;
-            bottom: 10px
+            bottom: 10px;
+
+            //display: none;
           }
         }
 
       }
 
+      .search {
+        border-bottom: 1px solid gray;
+
+        .searchForm {
+
+          input {
+            background-color: transparent;
+            border: none;
+            color: white;
+            outline: none;
+            padding: 10px;
+            border-bottom: 1px solid gray;
+            width: 100%;
+
+            &::placeholder {
+              color: lightgray;
+            }
+          }
+        }
+
+        .userChat {
+          padding: 10px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: white;
+          cursor: pointer;
+
+          &:hover {
+            background-color: rgba(0,0,0,0.1);
+          }
+
+          img {
+            background-color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+
+          .userChatInfo {
+
+
+            span {
+
+            }
+          }
+        }
+      }
+
+      .chats {
+
+        .userChat {
+          padding: 10px;
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: white;
+          cursor: pointer;
+
+          img {
+            background-color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+
+          .userChatInfo {
+            font-size: 24px;
+            //font-weight: 500;
+
+            span {
+
+            }
+
+            .chatlink {
+              font-size: 14px;
+              color: white;
+              text-decoration: none;
+            }
+          }
+        }
+      }
     }
 
     .chat {
-      flex: 7;
+      flex: 12;
 
       .chatInfo {
         height: 50px;
-        background-color: $navColorTextify;
+        background-color: $navColor;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -207,65 +300,99 @@ $lighterNavColorTextidy: #555555;
       }
 
       .messages {
-        //background-color: #FFA164;
-        background-color: rgba(255,255,255,0.1);
+        background-color: rgba(255, 255, 255, 0.1);
         padding: 10px;
         height: calc(100% - 100px);
         overflow: scroll;
 
-        .message {
-          display: flex;
-          gap: 20px;
+        ul {
 
-          .messageInfo {
+          .sent {
             display: flex;
-            flex-direction: column;
-            color: gray;
-            align-items: center;
-
-            img {
-              background-color: white;
-              height: 50px;
-              width: 50px;
-              border-radius: 50%;
-              object-fit: cover;
-            }
-
-            span {
-
-            }
-          }
-
-          .messageContent {
-            max-width: 50%;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-
-            p {
-              background-color: white;
-              padding: 10px 20px;
-              border-radius: 0px 10px 10px 10px;
-              max-width: max-content;
-            }
-
-            img {
-              width: 50%;
-              margin-bottom: 20px;
-            }
-          }
-
-          &.owner {
+            gap: 20px;
             flex-direction: row-reverse;
 
-            .messageContent {
-              align-items: flex-end;
+            .messageInfo {
+              display: flex;
+              flex-direction: column;
+              color: gray;
+              align-items: center;
+
+              img {
+                background-color: white;
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+                object-fit: cover;
+              }
+
+              span {
+
+              }
             }
 
-            p {
-              background-color: #5d5b8d;
-              color: white;
-              border-radius: 10px 0px 10px 10px;
+            .messageContent {
+              max-width: 50%;
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              align-items: flex-end;
+
+              p {
+                background-color: rgba(0, 0, 0, 0.2);
+                padding: 10px 20px;
+                border-radius: 10px 0px 10px 10px;
+                max-width: max-content;
+                color: white;
+              }
+
+              img {
+                width: 50%;
+                margin-bottom: 20px;
+              }
+            }
+          }
+
+          .replies {
+            display: flex;
+            gap: 20px;
+
+            .messageInfo {
+              display: flex;
+              flex-direction: column;
+              color: gray;
+              align-items: center;
+
+              img {
+                background-color: white;
+                height: 50px;
+                width: 50px;
+                border-radius: 50%;
+                object-fit: cover;
+              }
+
+              span {
+
+              }
+            }
+
+            .messageContent {
+              max-width: 50%;
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+
+              p {
+                background-color: rgba(255, 255, 255, 0.75);
+                padding: 10px 20px;
+                border-radius: 0px 10px 10px 10px;
+                max-width: max-content;
+              }
+
+              img {
+                width: 50%;
+                margin-bottom: 20px;
+              }
             }
           }
         }
@@ -273,7 +400,7 @@ $lighterNavColorTextidy: #555555;
 
       .messageInput {
         height: 50px;
-        background-color: $logoColorTextify;
+        background-color: $logoColor;
         padding: 20px;
         display: flex;
         align-items: center;
@@ -281,7 +408,7 @@ $lighterNavColorTextidy: #555555;
 
         form {
           input {
-            background-color: $logoColorTextify;
+            background-color: $logoColor;
             width: 100%;
             border: none;
             outline: none;
@@ -292,16 +419,23 @@ $lighterNavColorTextidy: #555555;
               color: lightgray;
             }
           }
+
+          p {
+            color: white;
+            margin: auto;
+            font-size: 16px;
+          }
+
           .submit {
-              display: flex;
-              align-items: center;
-              gap: 10px;
-              float: right;
-              margin-right: 20px;
-              border: none;
-              padding: 5px 10px;
-              color: white;
-              background-color: $btnColorTextify;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            float: right;
+            margin-right: 20px;
+            border: none;
+            padding: 5px 10px;
+            color: white;
+            background-color: $btnColor;
           }
         }
       }
@@ -309,32 +443,7 @@ $lighterNavColorTextidy: #555555;
   }
 }
 
-// SCROLL
-
-/* width */
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: none;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: $lighterNavColorTextidy;
-  border-radius: 5px;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: $navColorTextify;
-}
-
-::-webkit-scrollbar-button {
-  display: none;
-}
+// NOTFOUND
 
 .notfoundContainer {
   font-family: $fontFamily;
@@ -358,7 +467,7 @@ $lighterNavColorTextidy: #555555;
   }
 
   .button {
-    background-color: $btnColorTextify;
+    background-color: $btnColor;
     color: white;
     padding: 10px;
     font-weight: bold;
@@ -370,4 +479,36 @@ $lighterNavColorTextidy: #555555;
       background-color: rgba(247, 160, 77, 0.75);
     }
   }
+}
+
+
+// SCROLL
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $lighterNavColor;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $navColor;
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+::-webkit-scrollbar-corner {
+  display: none;
 }
