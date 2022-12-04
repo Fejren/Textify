@@ -1,7 +1,7 @@
 import {connect} from "react-redux";
 import * as messageActions from "../actions/message";
 import {useEffect} from "react";
-import Chats from "./Chats";
+import Contact from "./Contact";
 import Navbar from "./Navbar";
 import Search from "./Search";
 
@@ -28,7 +28,7 @@ const Sidebar = ({ isAuthenticated, user, getUserChats, chats }) => {
     let fullName = `${currentUser.first_name} ${currentUser.last_name}`
     if(fullName === c.participants[0]){
       return (
-        <Chats
+        <Contact
           key={c.id}
           contact={c.participants[1]}
           picURL="http://emilcarlsson.se/assets/louislitt.png"
@@ -38,7 +38,7 @@ const Sidebar = ({ isAuthenticated, user, getUserChats, chats }) => {
       );
     } else {
       return (
-        <Chats
+        <Contact
           key={c.id}
           contact={c.participants[0]}
           picURL="http://emilcarlsson.se/assets/louislitt.png"

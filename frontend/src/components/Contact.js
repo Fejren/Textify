@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-const Chats = props => {
+const Contact = props => {
 
   return (
     <div className={"chats"}>
@@ -15,4 +15,4 @@ const Chats = props => {
   )
 }
 
-export default Chats;
+export default Contact;
