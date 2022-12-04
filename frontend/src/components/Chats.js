@@ -6,9 +6,9 @@ const Chats = props => {
   return (
     <div className={"chats"}>
       <div className={"userChat"}>
-        <img />
+        <img src={''}/>
         <div className={"userChatInfo"}>
-          <Link className={'link'} to={props.chatURL}>{props.contact}</Link>
+          <Link className={'chatlink'} to={props.chatURL}>{props.contact}</Link>
         </div>
       </div>
     </div>
