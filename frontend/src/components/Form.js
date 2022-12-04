@@ -39,7 +39,6 @@ const HorizontalAddChatForm = ({ access, user }) => {
           })
           .then(res => {
             this.props.history.push(`/${res.data.id}`);
-            this.props.closeAddChatPopup();
             this.props.getUserChats(currentUser.id, access);
           })
           .catch(err => {
@@ -99,8 +98,6 @@ const HorizontalAddChatForm = ({ access, user }) => {
     );
 }
 
-const AddChatForm = Form.create()(HorizontalAddChatForm);
-
 const mapStateToProps = state => {
   return {
     access: state.auth.access,
@@ -110,15 +107,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    closeAddChatPopup: () => dispatch(navActions.closeAddChatPopup()),
     getUserChats: (userId, token) =>
       dispatch(messageActions.getUserChats(userId, token))
   };
 };
 
-export default withRouter(
-  connect(
+export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(AddChatForm)
-);
+)(HorizontalAddChatForm);

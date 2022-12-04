@@ -25,8 +25,9 @@ const Chat = ({ user, messages }) => {
   if (!isChat && chatId) {
     setIsChat(1)
     initialiseChat()
+  } else if (!chatId) {
+    messages = null;
   }
-
 
   function waitForSocketConnection(callback) {
     setTimeout(function () {
