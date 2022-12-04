@@ -28,14 +28,16 @@ const Messages = ({ messages, currentUser }) => {
   const renderMessages = messages => {
     let array = messages.map((message, i, arr) => (<li
         key={message.id}
-        style={{marginBottom: arr.length - 1 === i ? "300px" : "15px"}}
+        style={{marginBottom: arr.length - 1 === i ? "15px" : "15px"}}
         className={message.author === currentUser.id ? "sent" : "replies"}
       >
-        <p>
-          {message.content}
-          <br/>
-          <small>{renderTimestamp(message.timestamp)}</small>
-        </p>
+          <div className={'messageInfo'}>
+            <img src={''}/>
+            <span>{renderTimestamp(message.timestamp)}</span>
+          </div>
+          <div className={'messageContent'}>
+            <p>{message.content}</p>
+          </div>
       </li>
     ));
 
