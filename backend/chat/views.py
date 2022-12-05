@@ -10,8 +10,8 @@ def get_last_10_messages(chatId):
     return chat.messages.order_by('-timestamp').all()[:10]
 
 
-def get_user_contact(user_email):
-    user = get_object_or_404(User, email=user_email)
+def get_user_contact(user_id):
+    user = get_object_or_404(User, id=user_id)
     return get_object_or_404(Contact, user=user)
 
 
