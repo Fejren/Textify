@@ -13,6 +13,20 @@ class CustomRouter(SimpleRouter):
             initkwargs={'suffix': 'Create'}
         ),
         Route(
+            url=r'update',
+            mapping={'update': 'update'},
+            name='{basename}-update',
+            detail=True,
+            initkwargs={'suffix': 'Update'}
+        ),
+        Route(
+            url=r'delete',
+            mapping={'delete': 'delete'},
+            name='{basename}-delete',
+            detail=True,
+            initkwargs={'suffix': 'Delete'}
+        ),
+        Route(
             url=r'^{prefix}$',
             mapping={'get': 'list'},
             name='{basename}-list',
