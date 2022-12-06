@@ -1,7 +1,11 @@
+from django.contrib.auth import get_user_model
+from django.shortcuts import get_object_or_404
 from rest_framework import serializers
 
 from core.models import Chat, Contact
 from chat.views import get_user_contact
+
+User = get_user_model()
 
 
 class ContactSerializer(serializers.StringRelatedField):
@@ -23,7 +27,8 @@ class ChatSerializer(serializers.ModelSerializer):
         chat = Chat()
         chat.save()
         for id in participants:
-            contact = get_user_contact(id)
+            user = get_object_or_404(User, email=id)
+            contact = get_user_contact(user.id)
             chat.participants.add(contact)
         chat.save()
         return chat
