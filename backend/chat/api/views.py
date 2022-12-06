@@ -4,7 +4,7 @@ from .serializers import ChatSerializer
 
 from rest_framework import permissions
 
-from ..views import get_user_contact
+from ..views import get_user_contact, get_contact
 
 
 class ChatViewSet(viewsets.GenericViewSet,
@@ -32,4 +32,10 @@ class ChatViewSet(viewsets.GenericViewSet,
             return queryset
 
     def perform_create(self, serializer):
-        serializer.save()
+        participants = self.request.data.get("participants", None)
+        contacts = []
+        for id in participants:
+            contact = get_contact(id)
+            contacts.append(contact)
+        serializer.save(participants=contacts, messages=[])
+

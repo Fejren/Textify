@@ -15,5 +15,10 @@ def get_user_contact(user_id):
     return get_object_or_404(Contact, user=user)
 
 
+def get_contact(user_email):
+    user = get_object_or_404(User, email=user_email)
+    return get_object_or_404(Contact, user=user)
+
+
 def get_current_chat(chatId):
     return get_object_or_404(Chat, id=chatId)
