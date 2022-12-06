@@ -3,7 +3,7 @@ from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
 import json
 from core.models import Message, Chat, Contact
-from .views import get_last_10_messages, get_user_contact, get_current_chat
+from .views import get_last_messages, get_user_contact, get_current_chat
 
 User = get_user_model()
 
@@ -11,7 +11,7 @@ User = get_user_model()
 class ChatConsumer(WebsocketConsumer):
 
     def fetch_messages(self, data):
-        messages = get_last_10_messages(data['chatId'])
+        messages = get_last_messages(data['chatId'])
         content = {
             'command': 'messages',
             'messages': self.messages_to_json(messages)
