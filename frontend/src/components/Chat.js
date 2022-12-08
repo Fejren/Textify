@@ -78,6 +78,7 @@ const Chat = ({ user, messages }) => {
             id="chat-message-input"
             type="text"
             placeholder="Napisz wiadomość..."
+            autoComplete={'false'}
           /> : <p>Wybierz kontakt</p>}
           <i className="fa fa-paperclip attachment" aria-hidden="true"/>
           {chatId && <button id="chat-message-submit" className="submit">
