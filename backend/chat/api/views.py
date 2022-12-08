@@ -34,8 +34,8 @@ class ChatViewSet(viewsets.GenericViewSet,
     def perform_create(self, serializer):
         participants = self.request.data.get("participants", None)
         contacts = []
-        for id in participants:
-            contact = get_contact(id)
+        for email in participants:
+            contact = get_contact(email)
             contacts.append(contact)
         serializer.save(participants=contacts, messages=[])
 

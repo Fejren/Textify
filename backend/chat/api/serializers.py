@@ -20,15 +20,3 @@ class ChatSerializer(serializers.ModelSerializer):
         model = Chat
         fields = ('id', 'messages', 'participants')
         read_only = ('id',)
-
-    def create(self, validated_data):
-        print(validated_data)
-        participants = validated_data.pop('participants')
-        chat = Chat()
-        chat.save()
-        for id in participants:
-            user = get_object_or_404(User, email=id)
-            contact = get_user_contact(user.id)
-            chat.participants.add(contact)
-        chat.save()
-        return chat

@@ -29,7 +29,7 @@ const Search = ({ access, user, getUserChats }) => {
       };
       axios
         .post(`${API_URL}/chat/create/`, {
-          participants: [email],
+          participants: [email, currentUser.email],
         })
         .then(res => {
           navigate(`/${res.data.id}`);
