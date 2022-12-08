@@ -512,3 +512,42 @@ $lighterNavColor: #555555;
 ::-webkit-scrollbar-corner {
   display: none;
 }
+
+// DROPDOWN
+
+.dropdown-button {
+  text-align: center;
+  font-size: 24px;
+  background-color: rgba(0,0,0,0);
+
+  text-align: center;
+  font-size: 24px;
+
+  //&:after {
+  //  display: none;
+  //}
+
+  .dropdown-menu {
+
+
+    .dropdown-item {
+
+
+    }
+  }
+}
+
+.dropdown-img {
+  width: 24px;
+  height: 24px;
+
+  float: left;
+}
+
+
+// ICON
+
+.chevron {
+  transform: rotate(90deg);
+  fill: white;
+}
