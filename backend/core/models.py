@@ -3,6 +3,7 @@ from django.contrib.auth.models import PermissionsMixin
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.db.models.signals import post_save
 
 from backend import settings
 
@@ -84,6 +85,15 @@ class Message(models.Model):
 
     def __str__(self):
         return self.contact.__str__()
+
+
+def create_contact(sender, instance, created, **kwargs):
+    if created:
+        Contact.objects.create(user=instance)
+        print('contact created!')
+
+
+post_save.connect(create_contact, sender=User)
 
 
 class Chat(models.Model):

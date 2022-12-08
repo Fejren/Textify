@@ -17,6 +17,12 @@ def get_user_contact(user_id):
 
 def get_contact(user_email):
     user = get_object_or_404(User, email=user_email)
+    if user:
+        contact = get_object_or_404(Contact, user=user)
+        if contact:
+            return contact
+        else:
+            return Contact.objects.create(user=user)
     return get_object_or_404(Contact, user=user)
 
 
