@@ -10,7 +10,7 @@ const Messages = ({ messages, currentUser }) => {
     if (timeDiff < 1) {
       // less than one minute ago
       prefix = "teraz";
-    } else if (timeDiff < 60 && timeDiff > 1) {
+    } else if (timeDiff < 60) {
       // less than sixty minutes ago
       prefix = `${timeDiff} minut temu`;
     } else if (timeDiff < 24 * 60 && timeDiff > 60) {
