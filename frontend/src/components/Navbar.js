@@ -26,13 +26,11 @@ const Navbar = ({ logout, user }) => {
         <img className={"img"} src={currentUser.avatar} alt={""}/>
         <span className={"name"}>{currentUser.first_name} {currentUser.last_name}</span>
 
-
         <Dropdown>
           <Dropdown.Toggle
-              className={'dropdown-button'}
+              className={'dropdown-toggle'}
           >
-            {/*<CaretIcon/>*/}
-            <ChevronIcon className={'chevron'}/>
+            <CaretIcon className={'caret-img'}/>
           </Dropdown.Toggle>
 
           <Dropdown.Menu

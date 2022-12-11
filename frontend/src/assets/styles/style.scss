@@ -6,6 +6,17 @@
   }
 }
 
+@mixin tablet {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media screen and (max-width: 1200px) {
+    @content;
+  }
+}
 $fontFamily: 'Montserrat', sans-serif;
 
 $bgColor: #563DD9;
@@ -16,12 +27,9 @@ $sideColor: #563DD9;
 $navColor: #303030;
 $lighterNavColor: #555555;
 
-//#563DD9
-
-
-// @include mobile {
-// ...
-// }
+ //@include mobile {
+ //...
+ //}
 
 
 .formContainer {
@@ -51,6 +59,14 @@ $lighterNavColor: #555555;
       font-family: 'Montserrat', sans-serif;
       font-weight: bold;
       font-size: 34px;
+
+      //@include mobile {
+      //  display: none;
+      //}
+
+      @include tablet {
+        display: none;
+      }
     }
 
     .title {
@@ -136,7 +152,7 @@ $lighterNavColor: #555555;
     .sidebar {
       flex: 4;
       background-color: rgba(255, 255, 255, 0.05);
-      position: relative;
+      min-width: 140px;
 
       .navbar {
         display: flex;
@@ -171,6 +187,13 @@ $lighterNavColor: #555555;
 
           .name {
             font-size: 18px;
+
+            overflow: hidden;
+            white-space: nowrap;
+
+            @include mobile {
+              display: none;
+            }
           }
 
           .btn {
@@ -192,6 +215,7 @@ $lighterNavColor: #555555;
         border-bottom: 1px solid gray;
 
         .searchForm {
+          position: relative;
 
           input {
             background-color: transparent;
@@ -205,6 +229,21 @@ $lighterNavColor: #555555;
             &::placeholder {
               color: lightgray;
             }
+          }
+
+          .addbtn {
+            display: flex;
+            position: absolute;
+            align-items: center;
+            gap: 10px;
+            float: right;
+            margin-right: 20px;
+            border: none;
+            padding: 5px 10px;
+            color: white;
+            background-color: $btnColor;
+            top: 5px;
+            right: -15px;
           }
         }
 
@@ -239,6 +278,8 @@ $lighterNavColor: #555555;
       }
 
       .chats {
+        overflow: scroll;
+        padding: 0px;
 
         .userChat {
           padding: 10px;
@@ -254,11 +295,14 @@ $lighterNavColor: #555555;
             height: 50px;
             border-radius: 50%;
             object-fit: cover;
+
+            @include mobile {
+              display: none;
+            }
           }
 
           .userChatInfo {
             font-size: 24px;
-            //font-weight: 500;
 
             span {
 
@@ -278,7 +322,7 @@ $lighterNavColor: #555555;
       flex: 12;
 
       .chatInfo {
-        height: 50px;
+        height: 5%;
         background-color: $navColor;
         display: flex;
         align-items: center;
@@ -302,7 +346,7 @@ $lighterNavColor: #555555;
       .messages {
         background-color: rgba(255, 255, 255, 0.1);
         padding: 10px;
-        height: calc(100% - 100px);
+        height: 88%;
         overflow: scroll;
 
         ul {
@@ -399,25 +443,33 @@ $lighterNavColor: #555555;
       }
 
       .messageInput {
-        height: 50px;
+        height: 7%;
         background-color: $logoColor;
         padding: 20px;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        position: relative;
 
         form {
+          width: 100%;
+          margin: 0px;
+
           input {
             background-color: $logoColor;
             width: 100%;
             border: none;
             outline: none;
-            color: #2f2d52;
+            color: white;
             font-size: 18px;
 
             &::placeholder {
               color: lightgray;
             }
+          }
+
+          i {
+            display: none;
           }
 
           p {
@@ -427,7 +479,6 @@ $lighterNavColor: #555555;
           }
 
           .submit {
-            display: flex;
             align-items: center;
             gap: 10px;
             float: right;
@@ -436,6 +487,22 @@ $lighterNavColor: #555555;
             padding: 5px 10px;
             color: white;
             background-color: $btnColor;
+            position: absolute;
+            right: 0px;
+
+            p {
+              @include mobile {
+                display: none;
+              }
+            }
+
+            .send-img {
+              display: none;
+
+              @include mobile {
+                display: block;
+              }
+            }
           }
         }
       }
@@ -515,13 +582,10 @@ $lighterNavColor: #555555;
 
 // DROPDOWN
 
-.dropdown-button {
+.dropdown-toggle {
   text-align: center;
   font-size: 24px;
   background-color: rgba(0,0,0,0);
-
-  text-align: center;
-  font-size: 24px;
 
   //&:after {
   //  display: none;
@@ -547,7 +611,17 @@ $lighterNavColor: #555555;
 
 // ICON
 
-.chevron {
-  transform: rotate(90deg);
+.caret-img {
   fill: white;
 }
+
+.send-img {
+  fill: white;
+  height: 24px;
+  width: 24px;
+}
+
+//.chevron {
+//  transform: rotate(90deg);
+//  fill: white;
+//}

@@ -55,7 +55,7 @@ const Search = ({ access, user, getUserChats }) => {
           placeholder={"Znajdź użytkownika"}
           onChange={e => handleChange(e)}
         />
-        <button type={"submit"}>submit</button>
+        <button type={"submit"} className={'addbtn'}>Dodaj</button>
       </form>
     </div>
   )
