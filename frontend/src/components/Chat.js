@@ -5,6 +5,8 @@ import {connect} from "react-redux";
 import {useParams} from "react-router-dom";
 import Messages from "./Message";
 
+import { ReactComponent as SendIcon } from '../assets/img/send.svg';
+
 const Chat = ({ user, messages }) => {
   let [message, setMessage] = useState("")
   let [isChat, setIsChat] = useState(null)
@@ -78,11 +80,12 @@ const Chat = ({ user, messages }) => {
             id="chat-message-input"
             type="text"
             placeholder="Napisz wiadomość..."
-            autoComplete={'false'}
+            autoComplete={'off'}
           /> : <p>Wybierz kontakt</p>}
           <i className="fa fa-paperclip attachment" aria-hidden="true"/>
           {chatId && <button id="chat-message-submit" className="submit">
-            Wyslij
+            <p>Wyslij</p>
+            <SendIcon className={'send-img'}/>
             <i className="fa fa-paper-plane" aria-hidden="true"/>
           </button>}
         </form>

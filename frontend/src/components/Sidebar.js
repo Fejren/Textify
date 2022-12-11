@@ -54,9 +54,9 @@ return(
     <div className={"sidebar"}>
       <Navbar />
       <Search />
-      <ul>
+      <div className={'chats'}>
         {activeChats}
-      </ul>
+      </div>
     </div>
   );
 }
