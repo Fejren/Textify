@@ -38,4 +38,3 @@ class ChatViewSet(viewsets.GenericViewSet,
             contact = get_contact(email)
             contacts.append(contact)
         serializer.save(participants=contacts, messages=[])
-
