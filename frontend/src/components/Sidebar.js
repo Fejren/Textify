@@ -26,7 +26,7 @@ const Sidebar = ({ isAuthenticated, user, getUserChats, chats }) => {
   let activeChats = chats.map(c => {
     let currentUser = {...user}
     let fullName = `${currentUser.first_name} ${currentUser.last_name}`
-    if(fullName === c.participants[0]){
+    if(fullName === `${c.participants[0].first_name} ${c.participants[0].last_name}`){
       return (
         <Contact
           key={c.id}
