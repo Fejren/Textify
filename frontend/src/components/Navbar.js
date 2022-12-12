@@ -2,11 +2,8 @@ import React, {useState} from 'react';
 import { logout } from '../actions/auth'
 import {connect} from "react-redux";
 import {Navigate} from "react-router-dom";
-import { Button , Dropdown} from "react-bootstrap";
-import { ReactComponent as ChevronIcon } from '../assets/img/chevron.svg';
-import { ReactComponent as CogIcon } from '../assets/img/cog.svg';
-import { ReactComponent as LogoutIcon } from '../assets/img/logout.svg';
-import { ReactComponent as CaretIcon } from '../assets/img/caret.svg';
+import Dropdown from './Dropdown';
+
 
 const Navbar = ({ logout, user }) => {
   const [redirect, setRedirect] = useState(false);
@@ -26,30 +23,7 @@ const Navbar = ({ logout, user }) => {
         <img className={"img"} src={currentUser.avatar} alt={""}/>
         <span className={"name"}>{currentUser.first_name} {currentUser.last_name}</span>
 
-        <Dropdown>
-          <Dropdown.Toggle
-              className={'dropdown-toggle'}
-          >
-            <CaretIcon className={'caret-img'}/>
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu
-              className={'dropdown-menu'}
-          >
-            <Dropdown.Item
-                className={'dropdown-item'}
-            >
-              <CogIcon className={'dropdown-img'}/>
-              <p>Ustawienia</p>
-            </Dropdown.Item>
-            <Dropdown.Item
-                className={'dropdown-item'}
-            >
-              <LogoutIcon className={'dropdown-img'}/>
-              <p className={''} onClick={() => handleLogout()}>Wyloguj</p>
-            </Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
+        <Dropdown/>
 
       </div>
       {redirect ? <Navigate to='/login' /> : null}
