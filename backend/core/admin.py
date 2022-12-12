@@ -28,5 +28,4 @@ class UserAdmin(BaseUserAdmin):
 
 admin.site.register(Message)
 admin.site.register(Chat)
-admin.site.register(Contact)
 admin.site.register(User)

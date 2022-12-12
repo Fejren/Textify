@@ -1,11 +1,7 @@
 from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
 from django.contrib.auth.models import PermissionsMixin
-from django.db import models
 from django.contrib.auth import get_user_model
 from django.db import models
-from django.db.models.signals import post_save
-
-from backend import settings
 
 
 class UserManager(BaseUserManager):
@@ -68,37 +64,19 @@ class User(AbstractBaseUser, PermissionsMixin):
 user_model = get_user_model()
 
 
-class Contact(models.Model):
+class Message(models.Model):
     user = models.ForeignKey(
-        user_model, related_name='friends', on_delete=models.CASCADE)
-    friends = models.ManyToManyField('self', blank=True)
+        user_model, related_name='messages', on_delete=models.CASCADE)
+    content = models.TextField()
+    timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.user.email
 
 
-class Message(models.Model):
-    contact = models.ForeignKey(
-        Contact, related_name='messages', on_delete=models.CASCADE)
-    content = models.TextField()
-    timestamp = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.contact.user.email
-
-
-def create_contact(sender, instance, created, **kwargs):
-    if created:
-        Contact.objects.create(user=instance)
-        print('contact created!')
-
-
-post_save.connect(create_contact, sender=User)
-
-
 class Chat(models.Model):
     participants = models.ManyToManyField(
-        Contact, related_name='chats', blank=True)
+        user_model, related_name='chats', blank=True)
     messages = models.ManyToManyField(Message, blank=True)
 
     def __str__(self):

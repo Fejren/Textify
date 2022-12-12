@@ -1,20 +1,14 @@
 from django.contrib.auth import get_user_model
-from django.shortcuts import get_object_or_404
 from rest_framework import serializers
 
-from core.models import Chat, Contact
-from chat.views import get_user_contact
+from core.models import Chat
+from user.serializers import UserSerializer
 
 User = get_user_model()
 
 
-class ContactSerializer(serializers.StringRelatedField):
-    def to_internal_value(self, value):
-        return value
-
-
 class ChatSerializer(serializers.ModelSerializer):
-    participants = ContactSerializer(many=True)
+    participants = UserSerializer(many=True)
 
     class Meta:
         model = Chat
