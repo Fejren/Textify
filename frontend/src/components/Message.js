@@ -32,7 +32,7 @@ const Messages = ({ messages, currentUser }) => {
         className={message.author === currentUser.id ? "sent" : "replies"}
       >
           <div className={'messageInfo'}>
-            <img src={''}/>
+            <img src={message.author.avatar}/>
             <span>{renderTimestamp(message.timestamp)}</span>
           </div>
           <div className={'messageContent'}>

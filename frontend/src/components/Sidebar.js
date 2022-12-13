@@ -31,8 +31,6 @@ const Sidebar = ({ isAuthenticated, user, getUserChats, chats }) => {
         <Contact
           key={c.id}
           contact={c.participants[1]}
-          picURL="http://emilcarlsson.se/assets/louislitt.png"
-          status="busy"
           chatURL={`/${c.id}`}
         />
       );
@@ -41,8 +39,6 @@ const Sidebar = ({ isAuthenticated, user, getUserChats, chats }) => {
         <Contact
           key={c.id}
           contact={c.participants[0]}
-          picURL="http://emilcarlsson.se/assets/louislitt.png"
-          status="busy"
           chatURL={`/${c.id}`}
         />
       );
