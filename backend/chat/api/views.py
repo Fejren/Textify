@@ -30,8 +30,7 @@ class ChatViewSet(viewsets.GenericViewSet,
         if self.action == 'list':
             return [permissions.AllowAny(), ]
 
-        # return [permissions.IsAuthenticated(), ]
-        return [permissions.AllowAny(), ]
+        return [permissions.IsAuthenticated(), ]
 
     def get_queryset(self):
         if self.action == 'list':
