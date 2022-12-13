@@ -31,20 +31,13 @@ const Chat = ({ user, messages }) => {
     messages = null;
   }
 
-  // useEffect(()=> {
-  //     if (isChat) {
-  //       WebSocketInstance.disconnect()
-  //     } else {
-  //       waitForSocketConnection(() => {
-  //         WebSocketInstance.fetchMessages(
-  //           currentUser.id,
-  //           chatId
-  //         );
-  //       });
-  //       WebSocketInstance.connect(chatId);
-  //     }
-  //
-  // },[chatId])
+  useEffect(()=> {
+        WebSocketInstance.fetchMessages(
+          currentUser.id,
+          chatId
+        );
+      // WebSocketInstance.connect(chatId);
+  },[chatId])
 
   function waitForSocketConnection(callback) {
     setTimeout(function () {

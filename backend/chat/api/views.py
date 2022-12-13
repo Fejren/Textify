@@ -1,8 +1,7 @@
 from django.contrib.auth import get_user_model
-from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned, EmptyResultSet
+from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets, mixins
-from rest_framework.exceptions import APIException
 
 from core.models import Chat
 from .serializers import ChatSerializer, CreateChatSerializer
@@ -52,9 +51,4 @@ class ChatViewSet(viewsets.GenericViewSet,
             user = get_object_or_404(User, email=email)
             user_get.append(user.id)
             users.append(user)
-        try:
-            Chat.objects.get(participants__in=user_get)
-        except ObjectDoesNotExist:
-            serializer.save(participants=users, messages=[])
-        except MultipleObjectsReturned:
-            print('You can not create chat with this person')
+        serializer.save(participants=users, messages=[])
