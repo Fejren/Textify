@@ -1,7 +1,5 @@
-import React, {useState} from 'react';
-import { logout } from '../actions/auth'
+import React from 'react';
 import {connect} from "react-redux";
-import {Navigate} from "react-router-dom";
 import Dropdown from './Dropdown';
 
 
