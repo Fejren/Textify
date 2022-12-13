@@ -27,7 +27,7 @@ const Messages = ({ messages, currentUser }) => {
   };
 
   const renderMessages = messages => {
-    let array = messages.map((message, i, arr) => (<li
+    let array = messages.map((message, i, arr) => (<div
         key={message.id}
         style={{marginBottom: arr.length - 1 === i ? "15px" : "15px"}}
         className={message.author.id === currentUser.id ? "sent" : "replies"}
@@ -39,7 +39,7 @@ const Messages = ({ messages, currentUser }) => {
           <div className={'messageContent'}>
             <p>{message.content}</p>
           </div>
-      </li>
+      </div>
     ));
 
     return [...new Map(array.map(item =>

@@ -27,10 +27,17 @@ $sideColor: #563DD9;
 $navColor: #303030;
 $lighterNavColor: #555555;
 
- //@include mobile {
- //...
- //}
+//@include mobile {
+//...
+//}
 
+body {
+  cursor: default;
+
+  -webkit-user-select: none; // Safari
+  -ms-user-select: none; // IE 10 and IE 11
+  user-select: none; // Standard syntax
+}
 
 .formContainer {
   background-color: $bgColor;
@@ -107,7 +114,7 @@ $lighterNavColor: #555555;
         border: none;
         cursor: pointer;
         margin-top: 10px;
-        
+
       }
 
       .label {}
@@ -168,14 +175,19 @@ $lighterNavColor: #555555;
           font-weight: bold;
           font-size: 30px;
 
-           @include mobile {
-           display: none;
-           }
+          @include mobile {
+            display: none;
+          }
+
+          @include tablet {
+            display: none;
+          }
         }
 
         .user {
           display: flex;
           gap: 5px;
+          overflow: hidden;
 
           .img {
             background-color: #ffffff;
@@ -187,11 +199,14 @@ $lighterNavColor: #555555;
 
           .name {
             font-size: 18px;
-
             overflow: hidden;
             white-space: nowrap;
 
             @include mobile {
+              display: none;
+            }
+
+            @include tablet {
               display: none;
             }
           }
@@ -204,8 +219,6 @@ $lighterNavColor: #555555;
             cursor: pointer;
             position: absolute;
             bottom: 10px;
-
-            //display: none;
           }
         }
 
@@ -330,17 +343,6 @@ $lighterNavColor: #555555;
         padding: 20px;
         color: lightgray;
 
-        span {
-
-        }
-
-        .chatIcons {
-
-          img {
-            height: 24px;
-            cursor: pointer;
-          }
-        }
       }
 
       .messages {
@@ -349,11 +351,12 @@ $lighterNavColor: #555555;
         height: 88%;
         overflow: scroll;
 
-        ul {
+        div {
+
 
           .sent {
             display: flex;
-            gap: 20px;
+            gap: 10px;
             flex-direction: row-reverse;
 
             .messageInfo {
@@ -371,16 +374,22 @@ $lighterNavColor: #555555;
               }
 
               span {
-
+                width: 105px;
+                overflow: hidden;
+                white-space: nowrap;
               }
             }
 
             .messageContent {
-              max-width: 50%;
+              max-width: 70%;
               display: flex;
               flex-direction: column;
               gap: 10px;
               align-items: flex-end;
+
+              -webkit-user-select: text; // Safari
+              -ms-user-select: text; // IE 10 and IE 11
+              user-select: text; // Standard syntax
 
               p {
                 background-color: rgba(0, 0, 0, 0.2);
@@ -390,10 +399,10 @@ $lighterNavColor: #555555;
                 color: white;
               }
 
-              img {
-                width: 50%;
-                margin-bottom: 20px;
-              }
+              //img {
+              //  width: 50%;
+              //  margin-bottom: 20px;
+              //}
             }
           }
 
@@ -407,6 +416,7 @@ $lighterNavColor: #555555;
               color: gray;
               align-items: center;
 
+
               img {
                 background-color: white;
                 height: 50px;
@@ -416,7 +426,9 @@ $lighterNavColor: #555555;
               }
 
               span {
-
+                width: 105px;
+                overflow: hidden;
+                white-space: nowrap;
               }
             }
 
@@ -426,6 +438,10 @@ $lighterNavColor: #555555;
               flex-direction: column;
               gap: 10px;
 
+              -webkit-user-select: text; // Safari
+              -ms-user-select: text; // IE 10 and IE 11
+              user-select: text; // Standard syntax
+
               p {
                 background-color: rgba(255, 255, 255, 0.75);
                 padding: 10px 20px;
@@ -433,10 +449,10 @@ $lighterNavColor: #555555;
                 max-width: max-content;
               }
 
-              img {
-                width: 50%;
-                margin-bottom: 20px;
-              }
+              //img {
+              //  width: 50%;
+              //  margin-bottom: 20px;
+              //}
             }
           }
         }
@@ -476,6 +492,7 @@ $lighterNavColor: #555555;
             color: white;
             margin: auto;
             font-size: 16px;
+            cursor: default;
           }
 
           .submit {
@@ -548,20 +565,16 @@ $lighterNavColor: #555555;
   }
 }
 
-
 // SCROLL
 
-/* width */
 ::-webkit-scrollbar {
   width: 5px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background: none;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: $lighterNavColor;
   border-radius: 5px;
@@ -580,26 +593,6 @@ $lighterNavColor: #555555;
   display: none;
 }
 
-// DROPDOWN
-
-.dropdown-toggle {
-  text-align: center;
-  font-size: 24px;
-  background-color: rgba(0,0,0,0);
-
-  .dropdown-menu {
-
-
-    .dropdown-item {
-
-
-    }
-  }
-}
-
-
-
-
 // ICON
 
 .caret-img {
@@ -611,6 +604,8 @@ $lighterNavColor: #555555;
   height: 24px;
   width: 24px;
 }
+
+// DROPDOWN MENU
 
 .dropdown-btn {
   background-color: rgba(255, 255, 255, 0);
@@ -628,6 +623,10 @@ $lighterNavColor: #555555;
   width: 160px;
 
   @include mobile {
+    margin-left: 0px;
+  }
+
+  @include tablet {
     margin-left: 0px;
   }
 
