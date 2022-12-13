@@ -33,6 +33,7 @@ $lighterNavColor: #555555;
 
 body {
   cursor: default;
+  overflow-x: hidden;
 
   -webkit-user-select: none; // Safari
   -ms-user-select: none; // IE 10 and IE 11
@@ -168,6 +169,7 @@ body {
         padding: 15px;
         justify-content: space-between;
         color: white;
+        height: 10%;
 
         .logo {
           color: $logoColor;
@@ -226,6 +228,7 @@ body {
 
       .search {
         border-bottom: 1px solid gray;
+        height: 5.5%;
 
         .searchForm {
           position: relative;
@@ -236,8 +239,8 @@ body {
             color: white;
             outline: none;
             padding: 10px;
-            border-bottom: 1px solid gray;
             width: 100%;
+            height: 100%;
 
             &::placeholder {
               color: lightgray;
@@ -291,8 +294,10 @@ body {
       }
 
       .chats {
-        overflow: scroll;
+        //overflow: scroll;
+        overflow-y: scroll;
         padding: 0px;
+        height: 84.5%;
 
         .userChat {
           padding: 10px;
@@ -349,7 +354,8 @@ body {
         background-color: rgba(255, 255, 255, 0.1);
         padding: 10px;
         height: 88%;
-        overflow: scroll;
+        //overflow: scroll;
+        overflow-y: scroll;
 
         div {
 
@@ -583,7 +589,6 @@ body {
   border-radius: 5px;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: $navColor;
 }
