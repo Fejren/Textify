@@ -149,10 +149,13 @@ CORS_ALLOWED_ORIGINS = [
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/vol/web/static'
+MEDIA_URL = '/images/'
 
-MEDIA_URL = '/media/'
-MEDIA_ROOT = '/vol/web/media'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
 
 # Default primary key field type
