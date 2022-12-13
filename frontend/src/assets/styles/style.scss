@@ -386,6 +386,7 @@ body {
               flex-direction: column;
               gap: 10px;
               align-items: flex-end;
+              word-break: break-word;
 
               -webkit-user-select: text; // Safari
               -ms-user-select: text; // IE 10 and IE 11
@@ -408,7 +409,7 @@ body {
 
           .replies {
             display: flex;
-            gap: 20px;
+            gap: 10px;
 
             .messageInfo {
               display: flex;
@@ -437,6 +438,8 @@ body {
               display: flex;
               flex-direction: column;
               gap: 10px;
+              word-break: break-word;
+
 
               -webkit-user-select: text; // Safari
               -ms-user-select: text; // IE 10 and IE 11
