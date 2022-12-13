@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 
 import WebSocketInstance from "../websocket";
 import {connect} from "react-redux";
@@ -31,16 +31,20 @@ const Chat = ({ user, messages }) => {
     messages = null;
   }
 
-  useEffect(()=> {
-      WebSocketInstance.disconnect()
-      waitForSocketConnection(() => {
-        WebSocketInstance.fetchMessages(
-          currentUser.id,
-          chatId
-        );
-      });
-      WebSocketInstance.connect(chatId);
-  },[chatId])
+  // useEffect(()=> {
+  //     if (isChat) {
+  //       WebSocketInstance.disconnect()
+  //     } else {
+  //       waitForSocketConnection(() => {
+  //         WebSocketInstance.fetchMessages(
+  //           currentUser.id,
+  //           chatId
+  //         );
+  //       });
+  //       WebSocketInstance.connect(chatId);
+  //     }
+  //
+  // },[chatId])
 
   function waitForSocketConnection(callback) {
     setTimeout(function () {
