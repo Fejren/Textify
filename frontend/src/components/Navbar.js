@@ -4,10 +4,7 @@ import Dropdown from './Dropdown';
 
 
 const Navbar = ({ user }) => {
-
   const currentUser = {...user}
-
-  console.log(currentUser)
 
   return (
     <div className={"navbar"}>
