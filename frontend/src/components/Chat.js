@@ -58,10 +58,9 @@ const Chat = ({ user, messages }) => {
   return (
     <div className={'chat'}>
       <div className={'chatInfo'}>
-        {/*  TODO: zrób Tobiasz Szpak / czas wiadomości */}
       </div>
       <div className="messages">
-        <ul id="chat-log">
+        <div id="chat-log">
           {messages && <Messages
             messages={messages}
             currentUser={currentUser}
@@ -69,7 +68,7 @@ const Chat = ({ user, messages }) => {
           <div
             style={{float: "left", clear: "both"}}
           />
-        </ul>
+        </div>
       </div>
       <div className="messageInput">
         <form onSubmit={sendMessageHandler}>
