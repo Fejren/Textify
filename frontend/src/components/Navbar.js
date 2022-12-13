@@ -15,7 +15,7 @@ const Navbar = ({ user }) => {
     <div className={"navbar"}>
       <span className={"logo"}>Textify</span>
       <div className={"user"}>
-        <img className={"img"} src={currentUser.avatar} alt={""}/>
+        <img className={"img"} src={currentUser.avatar} alt={"avatar"}/>
         <span className={"name"}>{currentUser.first_name} {currentUser.last_name}</span>
         <Dropdown/>
       </div>

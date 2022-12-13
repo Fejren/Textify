@@ -1,4 +1,5 @@
 import React from 'react';
+import {API_URL} from "../settings";
 
 const Messages = ({ messages, currentUser }) => {
 
@@ -29,10 +30,10 @@ const Messages = ({ messages, currentUser }) => {
     let array = messages.map((message, i, arr) => (<li
         key={message.id}
         style={{marginBottom: arr.length - 1 === i ? "15px" : "15px"}}
-        className={message.author === currentUser.id ? "sent" : "replies"}
+        className={message.author.id === currentUser.id ? "sent" : "replies"}
       >
           <div className={'messageInfo'}>
-            <img src={message.author.avatar}/>
+            <img src={`${API_URL}${message.author.avatar}`} alt={'avatar'}/>
             <span>{renderTimestamp(message.timestamp)}</span>
           </div>
           <div className={'messageContent'}>
