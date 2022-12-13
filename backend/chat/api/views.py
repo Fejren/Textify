@@ -2,7 +2,7 @@ from django.contrib.auth import get_user_model
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets, mixins
 from core.models import Chat
-from .serializers import ChatSerializer
+from .serializers import ChatSerializer, CreateChatSerializer
 
 from rest_framework import permissions
 
@@ -16,13 +16,22 @@ class ChatViewSet(viewsets.GenericViewSet,
     queryset = Chat.objects.all()
     serializer_class = ChatSerializer
 
+    def get_serializer_class(self):
+        if self.action == 'list':
+            return ChatSerializer
+        if self.action == 'create':
+            return CreateChatSerializer
+
+        return self.serializer_class
+
     def get_permissions(self):
         if self.action == 'retrieve':
             return [permissions.AllowAny(), ]
         if self.action == 'list':
             return [permissions.AllowAny(), ]
 
-        return [permissions.IsAuthenticated(), ]
+        # return [permissions.IsAuthenticated(), ]
+        return [permissions.AllowAny(), ]
 
     def get_queryset(self):
         if self.action == 'list':
