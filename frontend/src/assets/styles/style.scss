@@ -359,7 +359,6 @@ body {
 
         div {
 
-        div {
 
           .sent {
             display: flex;
@@ -425,7 +424,6 @@ body {
               color: gray;
               align-items: center;
               text-align: center;
-
 
 
               img {
@@ -518,8 +516,10 @@ body {
             background-color: $btnColor;
             position: absolute;
             right: 0px;
+            cursor: pointer;
 
             p {
+              cursor: pointer;
               @include mobile {
                 display: none;
               }
@@ -664,6 +664,3 @@ body {
     }
   }
 }
-
-
-
