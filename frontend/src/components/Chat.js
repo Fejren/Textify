@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 
 import WebSocketInstance from "../websocket";
 import {connect} from "react-redux";
@@ -30,6 +30,14 @@ const Chat = ({ user, messages }) => {
   } else if (!chatId) {
     messages = null;
   }
+
+  useEffect(()=> {
+        WebSocketInstance.fetchMessages(
+          currentUser.id,
+          chatId
+        );
+      // WebSocketInstance.connect(chatId);
+  },[chatId])
 
   function waitForSocketConnection(callback) {
     setTimeout(function () {

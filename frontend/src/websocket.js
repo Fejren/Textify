@@ -40,8 +40,6 @@ class WebSocketService {
 
   disconnect() {
     this.socketRef.close();
-    console.log(this.socketRef)
-
   }
 
   socketNewMessage(data) {
