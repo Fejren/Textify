@@ -33,6 +33,7 @@ $lighterNavColor: #555555;
 
 body {
   cursor: default;
+  overflow-x: hidden;
 
   -webkit-user-select: none; // Safari
   -ms-user-select: none; // IE 10 and IE 11
@@ -168,6 +169,7 @@ body {
         padding: 15px;
         justify-content: space-between;
         color: white;
+        height: 10%;
 
         .logo {
           color: $logoColor;
@@ -226,6 +228,7 @@ body {
 
       .search {
         border-bottom: 1px solid gray;
+        height: 5.5%;
 
         .searchForm {
           position: relative;
@@ -236,8 +239,8 @@ body {
             color: white;
             outline: none;
             padding: 10px;
-            border-bottom: 1px solid gray;
             width: 100%;
+            height: 100%;
 
             &::placeholder {
               color: lightgray;
@@ -291,8 +294,10 @@ body {
       }
 
       .chats {
-        overflow: scroll;
+        //overflow: scroll;
+        overflow-y: scroll;
         padding: 0px;
+        height: 84.5%;
 
         .userChat {
           padding: 10px;
@@ -349,10 +354,12 @@ body {
         background-color: rgba(255, 255, 255, 0.1);
         padding: 10px;
         height: 88%;
-        overflow: scroll;
+        //overflow: scroll;
+        overflow-y: scroll;
 
         div {
 
+        div {
 
           .sent {
             display: flex;
@@ -364,6 +371,7 @@ body {
               flex-direction: column;
               color: gray;
               align-items: center;
+              text-align: center;
 
               img {
                 background-color: white;
@@ -374,7 +382,7 @@ body {
               }
 
               span {
-                width: 105px;
+                width: 110px;
                 overflow: hidden;
                 white-space: nowrap;
               }
@@ -387,10 +395,6 @@ body {
               gap: 10px;
               align-items: flex-end;
               word-break: break-word;
-
-              -webkit-user-select: text; // Safari
-              -ms-user-select: text; // IE 10 and IE 11
-              user-select: text; // Standard syntax
 
               -webkit-user-select: text; // Safari
               -ms-user-select: text; // IE 10 and IE 11
@@ -420,6 +424,8 @@ body {
               flex-direction: column;
               color: gray;
               align-items: center;
+              text-align: center;
+
 
 
               img {
@@ -431,7 +437,7 @@ body {
               }
 
               span {
-                width: 105px;
+                width: 110px;
                 overflow: hidden;
                 white-space: nowrap;
               }
@@ -443,11 +449,6 @@ body {
               flex-direction: column;
               gap: 10px;
               word-break: break-word;
-
-
-              -webkit-user-select: text; // Safari
-              -ms-user-select: text; // IE 10 and IE 11
-              user-select: text; // Standard syntax
 
               -webkit-user-select: text; // Safari
               -ms-user-select: text; // IE 10 and IE 11
@@ -591,7 +592,6 @@ body {
   border-radius: 5px;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: $navColor;
 }
