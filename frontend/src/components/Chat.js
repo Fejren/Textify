@@ -36,7 +36,6 @@ const Chat = ({ user, messages }) => {
           currentUser.id,
           chatId
         );
-      // WebSocketInstance.connect(chatId);
   },[chatId])
 
   function waitForSocketConnection(callback) {
