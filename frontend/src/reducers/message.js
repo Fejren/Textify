@@ -1,4 +1,4 @@
-import {ADD_MESSAGE, GET_CHATS_SUCCESS, SET_MESSAGES} from "../actions/types";
+import {ADD_MESSAGE, CLEAR_MESSAGES, GET_CHATS_SUCCESS, SET_MESSAGES} from "../actions/types";
 import {updateObject} from "../utility";
 
 const initialState = {
@@ -32,6 +32,12 @@ const reducer = (state = initialState, action) => {
       return setMessages(state, action);
     case GET_CHATS_SUCCESS:
       return setChats(state, action);
+    case CLEAR_MESSAGES:
+      return {
+        ...state,
+        messages: null,
+        chats: null,
+      }
     default:
       return state;
   }

@@ -2,7 +2,7 @@ import axios from "axios";
 import {
   ADD_MESSAGE,
   SET_MESSAGES,
-  GET_CHATS_SUCCESS
+  GET_CHATS_SUCCESS, CLEAR_MESSAGES
 } from "./types";
 
 import { API_URL } from "../settings";
@@ -28,7 +28,13 @@ const getUserChatsSuccess = chats => async dispatch => {
   });
 };
 
-export const getUserChats = (userId, token) => {
+export const clearMessages = () => dispatch => {
+  dispatch({
+    type: CLEAR_MESSAGES
+  });
+};
+
+export const getUserChats = (userId) => {
   return dispatch => {
     axios.defaults.headers = {
       "Content-Type": "application/json",
