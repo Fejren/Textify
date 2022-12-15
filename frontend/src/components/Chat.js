@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import WebSocketInstance from "../websocket";
 import {connect} from "react-redux";
@@ -48,7 +48,7 @@ const Chat = ({ user, messages }) => {
         console.log("Waiting for connection...")
         waitForSocketConnection(callback)
       }
-    }, 1000)
+    }, 100)
   }
 
   const sendMessageHandler = event => {

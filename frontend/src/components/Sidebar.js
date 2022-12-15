@@ -9,8 +9,6 @@ const Sidebar = ({ isAuthenticated, user, getUserChats, chats }) => {
 
   useEffect(() => {
     let currentUser = {...user}
-    
-    setTimeout(function () {
       if(isAuthenticated && currentUser.id) {
         getUserChats(
           currentUser.id
@@ -20,38 +18,37 @@ const Sidebar = ({ isAuthenticated, user, getUserChats, chats }) => {
         console.log("Waiting for details")
         return;
       }
-    }, 1000);
   }, [user])
 
-  let activeChats = chats.map(c => {
-    let currentUser = {...user}
-    let fullName = `${currentUser.first_name} ${currentUser.last_name}`
-    if(fullName === `${c.participants[0].first_name} ${c.participants[0].last_name}`){
-      return (
-        <Contact
-          key={c.id}
-          contact={c.participants[1]}
-          chatURL={`/${c.id}`}
-        />
-      );
-    } else {
-      return (
-        <Contact
-          key={c.id}
-          contact={c.participants[0]}
-          chatURL={`/${c.id}`}
-        />
-      );
-    }
-
-  });
+  // let activeChats =
 
 return(
     <div className={"sidebar"}>
       <Navbar />
       <Search />
       <div className={'chats'}>
-        {activeChats}
+        {chats && chats.map(c => {
+          let currentUser = {...user}
+          let fullName = `${currentUser.first_name} ${currentUser.last_name}`
+          if(fullName === `${c.participants[0].first_name} ${c.participants[0].last_name}`){
+            return (
+              <Contact
+                key={c.id}
+                contact={c.participants[1]}
+                chatURL={`/${c.id}`}
+              />
+            );
+          } else {
+            return (
+              <Contact
+                key={c.id}
+                contact={c.participants[0]}
+                chatURL={`/${c.id}`}
+              />
+            );
+          }
+
+        })}
       </div>
     </div>
   );

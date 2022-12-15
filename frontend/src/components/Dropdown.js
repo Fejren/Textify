@@ -5,9 +5,10 @@ import { ReactComponent as LogoutIcon } from '../assets/img/logout.svg';
 import {connect} from "react-redux";
 import {logout} from "../actions/auth";
 import {Navigate} from "react-router-dom";
+import {clearMessages} from "../actions/message";
 
 
-const Dropdown = ({ logout }) => {
+const Dropdown = ({ logout, clearMessages }) => {
     const [redirect, setRedirect] = useState(false);
     const [ display, setDisplay ] = useState('none');
 
@@ -21,6 +22,7 @@ const Dropdown = ({ logout }) => {
 
     const handleLogout = () => {
       logout();
+      clearMessages();
       setRedirect(true);
     }
 
@@ -53,4 +55,4 @@ const Dropdown = ({ logout }) => {
     );
 }
 
-export default connect(null,{ logout })(Dropdown);
+export default connect(null,{ logout, clearMessages })(Dropdown);

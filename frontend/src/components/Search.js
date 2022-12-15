@@ -6,7 +6,7 @@ import {API_URL} from "../settings";
 import { useNavigate } from 'react-router-dom';
 
 const Search = ({ access, user, getUserChats }) => {
-  const [email, setEmail] = useState([])
+  const [email, setEmail] = useState("")
   const [errors, setErrors] = useState()
 
   const navigate = useNavigate()
@@ -20,6 +20,7 @@ const Search = ({ access, user, getUserChats }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    setEmail("");
 
     if (formIsValid) {
       const currentUser = {...user}
@@ -53,6 +54,7 @@ const Search = ({ access, user, getUserChats }) => {
         <input
           type={"text"}
           placeholder={"Znajdź użytkownika"}
+          value={email}
           onChange={e => handleChange(e)}
         />
         <button type={"submit"} className={'addbtn'}>Dodaj</button>
